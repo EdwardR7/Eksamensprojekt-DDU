@@ -9,6 +9,8 @@ boolean[][] collision; //Collisiondetection
 boolean[] pressed = new boolean[256];
 
 int x, y;
+ArrayList<cars> car;
+
 
 void setup() {
   size(800, 800);
@@ -17,6 +19,13 @@ void setup() {
   columns = round(width/Scale);
 
   vejFelt = new boolean[rows][columns];
+  collision = new boolean[rows][columns];
+
+  car = new ArrayList<cars>();
+
+  for (int i = 0; i < 10; i++) {
+    car.add(new cars(round(random(0, columns)), round(random(0, rows))));
+  }
 }
 
 
@@ -24,10 +33,10 @@ void draw() {
   vejFelt[15][12] = true;
   background(-1);
   drawGrid();
-  move();
-
-  fill(255, 0, 0);
-  rect(x, y, Scale, Scale);
+  for (cars c : car) {
+    c.move();
+    c.display();
+  }
 
   for (int i = 0; i < rows-1; i++) {
     for (int j = 0; j < columns-1; j++) {
@@ -50,31 +59,6 @@ void drawGrid() {
   }
 }
 
-void move() {
-  if (pressed[65]) { /* A */
-    if (x/Scale > 0) {
-      x -= Scale;
-    }
-  }
-
-  if (pressed[68]) { /* D */
-    if (x/Scale < columns-1) {
-      x += Scale;
-    }
-  }
-
-  if (pressed[87]) { /* W */
-    if (y/Scale > 0) {
-      y-=Scale;
-    }
-  }
-
-  if (pressed[83]) { /* S */
-    if (y/Scale < rows-1) {
-      y+=Scale;
-    }
-  }
-}
 
 void keyPressed() {
   pressed[keyCode] = true;

@@ -1,5 +1,5 @@
 
-int Scale = 8; // size of each cell
+int Scale = 16; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -15,16 +15,28 @@ void setup() {
 
   rows = round(width/Scale);
   columns = round(width/Scale);
+
+  vejFelt = new boolean[rows][columns];
 }
 
 
 void draw() {
+  vejFelt[15][12] = true;
   background(-1);
   drawGrid();
   move();
 
   fill(255, 0, 0);
   rect(x, y, Scale, Scale);
+
+  for (int i = 0; i < rows-1; i++) {
+    for (int j = 0; j < columns-1; j++) {
+      if (vejFelt[i][j] == true) {
+        fill(0, 255, 0);
+        rect(i*Scale, j*Scale, Scale, Scale);
+      }
+    }
+  }
 }
 
 void drawGrid() {

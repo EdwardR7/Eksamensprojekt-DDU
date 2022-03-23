@@ -11,7 +11,7 @@ boolean[] pressed = new boolean[256];
 int x, y;
 
 void setup() {
-  size(800, 800, P2D);
+  size(800, 800);
 
   rows = round(width/Scale);
   columns = round(width/Scale);

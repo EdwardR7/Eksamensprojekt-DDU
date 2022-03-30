@@ -2,48 +2,71 @@ class cars {
 
   int x, y;
   int retning;
-  
-  cars(int x, int y){
+  int indexY, indexX;
+
+  cars(int x, int y) {
+    indexX = x;
+    indexY = y;
+
     this.x = round(x*Scale);
     this.y = round(y*Scale);
-}
+  }
 
-void display(){
-  fill(0,0,255);
-  rect(x,y,Scale,Scale);
-  
-}
+  void display() {
+    fill(0, 0, 255);
+    rect(x, y, Scale, Scale);
+  }
 
-void move(){
-  if (pressed[65]) { /* A */
-    if (x/Scale > 0) {
-      x -= Scale;
+  void move() {
+    indexX = x/Scale;
+    indexY = y/Scale;
+    collision[indexY][indexX] = true;
+    if (pressed[65]) { /* A */
+      execute(1);
+    }
+
+    if (pressed[68]) { /* D */
+      execute(2);
+    }
+
+
+    if (pressed[87]) { /* W */
+      execute(3);
+    }
+
+    if (pressed[83]) { /* S */
+      execute(4);
     }
   }
 
-  if (pressed[68]) { /* D */
-    if (x/Scale < columns-1) {
-      x += Scale;
+  void execute(int type) {
+
+    switch(type) {
+
+    case 1:
+      if (indexX > 0 && !collision[indexY][indexX-1]) {
+        x-= Scale; //GO LEFT
+        collision[indexY][indexX] = false;
+      }
+      break;
+    case 2:
+      if (indexX < columns-1 && !collision[indexY][indexX+1]) {
+        x+= Scale; //GO RIGHT;
+        collision[indexY][indexX] = false;
+      }
+      break;
+    case 3: 
+      if (indexY > 0 && !collision[indexY-1][indexX]) {
+        y-= Scale; // GO UP
+        collision[indexY][indexX] = false;
+      }
+      break;
+    case 4: 
+      if (indexY < rows-1 &&!collision[indexY+1][indexX]) {
+        y+= Scale; // GO DOWN
+        collision[indexY][indexX] = false;
+      }
+      break;
     }
   }
-
-  if (pressed[87]) { /* W */
-    if (y/Scale > 0) {
-      y-=Scale;
-    }
-  }
-
-  if (pressed[83]) { /* S */
-    if (y/Scale < rows-1) {
-      y+=Scale;
-    }
-  }
-}
-
-void collision(){
-
-  
-
-}
-
 }

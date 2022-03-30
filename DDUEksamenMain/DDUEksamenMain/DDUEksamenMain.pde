@@ -71,9 +71,11 @@ void keyReleased() {
 }
 
 void mouseDragged() {
-
+  try{
   vejFelt[round(mouseY/Scale)][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
   vejFelt[round(mouseY/Scale)][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
   vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
   vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
+  } catch( Exception e){
+  }
 }

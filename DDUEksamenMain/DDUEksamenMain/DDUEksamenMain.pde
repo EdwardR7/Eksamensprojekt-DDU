@@ -26,8 +26,8 @@ void setup() {
   for (int i = 0; i < 10; i++) {
     car.add(new cars(round(random(0, columns)), round(random(0, rows))));
   }
-  for (int r = 0; r < rows-1; r++) {
-    for (int R = 0; R < columns-1; R++) {
+  for (int r = 0; r < rows; r++) {
+    for (int R = 0; R < columns; R++) {
       vejFelt[r][R] = new Road(r, R, 0, false);
     }
   }
@@ -38,8 +38,8 @@ void draw() {
   background(-1);
   drawGrid();
 
-  for (int r = 0; r < rows-1; r++) {
-    for (int R = 0; R < columns-1; R++) {
+  for (int r = 0; r < rows; r++) {
+    for (int R = 0; R < columns; R++) {
       vejFelt[r][R].display();
     }
   }

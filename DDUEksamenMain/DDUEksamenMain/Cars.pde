@@ -29,36 +29,19 @@ class cars {
     catch(Exception e) {
     }
 
-
-    /*
-    if (pressed[65]) { // A
-     execute(1);
-     }
-     
-     if (pressed[68]) { // D
-     execute(2);
-     }
-     
-     
-     if (pressed[87]) { // W
-     execute(3);
-     }
-     
-     if (pressed[83]) { //S
-     execute(4);
-     }
-     */
   }
 
   void execute(int type) {
 
     switch(type) {
-
+      
+      
+//Tjekker om der er nogle inde for banen, om det er et vejfelt, og om det felt den går hen i er et vejfelt
     case 1:
       if (indexX > 0 && !collision[indexY][indexX-1] && vejFelt[indexY][indexX-1].roadtile) {
         x-= Scale; //GO LEFT
         collision[indexY][indexX] = false;
-      }
+      } 
       break;
     case 2:
       if (indexX < columns-1 && !collision[indexY][indexX+1] && vejFelt[indexY][indexX+1].roadtile) {

@@ -43,14 +43,16 @@ void draw() {
       vejFelt[r][R].display();
     }
   }
+
   for (cars c : car) {
     c.move();
     c.display();
   }
-  text(frameRate, 20 ,20);
+  text(frameRate, 20, 20);
 }
 
 void drawGrid() {
+  stroke(200);
   // Begin loop for columns
   for (int i = 0; i < height; i+=Scale) {
     line(0, i, width, i);
@@ -71,11 +73,20 @@ void keyReleased() {
 }
 
 void mouseDragged() {
-  try{
-  vejFelt[round(mouseY/Scale)][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
-  vejFelt[round(mouseY/Scale)][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
-  vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
-  vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
-  } catch( Exception e){
+  try {
+    vejFelt[round(mouseY/Scale)][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
+    vejFelt[round(mouseY/Scale)][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
+    vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
+    vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
+  } 
+  catch( Exception e) {
+  }
+}
+
+void mouseClicked() {
+  try {
+    car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+  }
+  catch( Exception e) {
   }
 }

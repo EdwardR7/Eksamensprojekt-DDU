@@ -20,6 +20,7 @@ class Road {
   void display() {
     if(roadtile){
     fill(100, 100, 100);
+    stroke(100);
     rect(x, y, Scale, Scale);
     }
   }

@@ -14,6 +14,7 @@ class cars {
 
   void display() {
     fill(0, 0, 255);
+    stroke(0,0,255);
     rect(x, y, Scale, Scale);
   }
 

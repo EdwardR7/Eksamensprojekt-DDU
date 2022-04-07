@@ -1,5 +1,19 @@
+import java.util.Map;
+import java.nio.file.Paths;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.SceneAntialiasing;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import javafx.scene.control.*;
+import processing.javafx.PSurfaceFX;
 
-int Scale = 16; // size of each cell
+int Scale = 8; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -11,8 +25,7 @@ boolean[] pressed = new boolean[256];
 int x, y;
 ArrayList<cars> car;
 
-<<<<<<< Updated upstream
-=======
+
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
   final Canvas canvas = (Canvas) surface.getNative();
@@ -73,10 +86,9 @@ protected PSurface initSurface() {
 
   return surface;
 }
->>>>>>> Stashed changes
 
 void setup() {
-  size(800, 800);
+  size(800, 800,FX2D);
 
   rows = round(width/Scale);
   columns = round(width/Scale);

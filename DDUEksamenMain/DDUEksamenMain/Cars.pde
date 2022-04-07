@@ -23,7 +23,7 @@ class cars {
       indexX = x/Scale;
       indexY = y/Scale;
       collision[indexY][indexX] = true;
-      int direction = round(random(4.9));
+     int direction = round(random(4.9));
 
       execute(direction);
     } 
@@ -35,8 +35,6 @@ class cars {
   void execute(int type) {
 
     switch(type) {
-      
-      
 //Tjekker om der er nogle inde for banen, om det er et vejfelt, og om det felt den går hen i er et vejfelt
     case 1:
       if (indexX > 0 && !collision[indexY][indexX-1] && vejFelt[indexY][indexX-1].roadtile) {
@@ -62,6 +60,9 @@ class cars {
         collision[indexY][indexX] = false;
       }
       break;
+    default: 
+    
+    break;
     }
   }
 }

@@ -14,7 +14,7 @@ import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 
 
-int Scale = 16; // size of each cell
+int Scale = 8; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -26,11 +26,71 @@ boolean[] pressed = new boolean[256];
 int x, y;
 ArrayList<cars> car;
 
+protected PSurface initSurface() {
+  surface = (PSurfaceFX) super.initSurface();
+  final Canvas canvas = (Canvas) surface.getNative();
+  final Scene oldScene = canvas.getScene();
+  final Stage stage = (Stage) oldScene.getWindow();
+  
+  try {
+    FXMLLoader loader = new FXMLLoader(Paths.get("C:\\Users\\nickl\\Documents\\GitHub\\Eksamensprojekt-DDU\\DDUEksamenMain\\DDUEksamenMain\\stage.fxml").toUri().toURL()); // abs path to fxml file
+    final Parent sceneFromFXML = loader.load();
+    final Map<String, Object> namespace = loader.getNamespace();
+    final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
+    
+
+    final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
+    final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
+    
+    System.out.println(namespace.get("butt1"));
+    b1.setOnAction(new EventHandler<ActionEvent>() { 
+    @Override
+    public void handle(ActionEvent event) {
+          
+    System.out.println("KNAP 1"); //Skriv funktioner her
+    frameRate(30);
+    }
+});
+
+    b2.setOnAction(new EventHandler<ActionEvent>() {
+    @Override
+    public void handle(ActionEvent event) {
+      
+    System.out.println("KNAP 2");
+    frameRate(120);
+    }
+});
+
+    final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
+    System.out.println(namespace.get("anchorPane"));
+    pane.getChildren().add(canvas); // processing to stackPane
+  
+    
+    canvas.widthProperty().bind(pane.widthProperty()); // bind canvas dimensions to pane
+    canvas.heightProperty().bind(pane.heightProperty()); // bind canvas dimensions to pane
+
+    Platform.runLater(new Runnable() {
+
+      @Override
+        public void run() {
+        stage.setScene(newScene);
+        
+      }
+    }
+    );
+  } 
+  catch (IOException e) {
+    e.printStackTrace();
+  }
+  
+
+  return surface;
+}
 
 void setup() {
-  size(800, 800, FX2D);
+  size(800,800, FX2D);
 
-  rows = round(width/Scale);
+  rows = round(height/Scale);
   columns = round(width/Scale);
 
   vejFelt = new Road[rows][columns];
@@ -38,9 +98,6 @@ void setup() {
 
   car = new ArrayList<cars>();
 
-  for (int i = 0; i < 10; i++) {
-    car.add(new cars(round(random(0, columns)), round(random(0, rows))));
-  }
   for (int r = 0; r < rows; r++) {
     for (int R = 0; R < columns; R++) {
       vejFelt[r][R] = new Road(r, R, 0, false);
@@ -63,6 +120,7 @@ void draw() {
     c.move();
     c.display();
   }
+  fill(1);
   text(frameRate, 20, 20);
 }
 
@@ -104,68 +162,4 @@ void mouseClicked() {
   }
   catch( Exception e) {
   }
-}
-
-protected PSurface initSurface() {
-  surface = (PSurfaceFX) super.initSurface();
-  final Canvas canvas = (Canvas) surface.getNative();
-  final Scene oldScene = canvas.getScene();
-  final Stage stage = (Stage) oldScene.getWindow();
-  
-  try {
-    FXMLLoader loader = new FXMLLoader(Paths.get("C:\\Users\\peter\\Desktop\\Programmering_ddu_trafik\\stage.fxml").toUri().toURL()); // abs path to fxml file
-    final Parent sceneFromFXML = loader.load();
-    final Map<String, Object> namespace = loader.getNamespace();
-    final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
-    
-    
-
-    final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
-    final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
-    
-    System.out.println(namespace.get("butt1"));
-    b1.setOnAction(new EventHandler<ActionEvent>() { 
-    @Override
-    public void handle(ActionEvent event) {
-          
-    System.out.println("KNAP 1"); //Skriv funktioner her
-    }
-});
-
-    b2.setOnAction(new EventHandler<ActionEvent>() {
-    @Override
-    public void handle(ActionEvent event) {
-      
-    System.out.println("KNAP 2");
-    }
-});
-
-    
-    
-    
-    final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
-    System.out.println(namespace.get("anchorPane"));
-    pane.getChildren().add(canvas); // processing to stackPane
-  
-    
-    canvas.widthProperty().bind(pane.widthProperty()); // bind canvas dimensions to pane
-    canvas.heightProperty().bind(pane.heightProperty()); // bind canvas dimensions to pane
-
-    Platform.runLater(new Runnable() {
-
-      @Override
-        public void run() {
-        stage.setScene(newScene);
-        
-        
-      }
-    }
-    );
-  } 
-  catch (IOException e) {
-    e.printStackTrace();
-  }
-  
-
-  return surface;
 }

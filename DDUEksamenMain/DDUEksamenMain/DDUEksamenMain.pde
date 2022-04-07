@@ -33,7 +33,7 @@ protected PSurface initSurface() {
   final Stage stage = (Stage) oldScene.getWindow();
   
   try {
-    FXMLLoader loader = new FXMLLoader(Paths.get(System.getProperty("user.home") + "\\Documents\\GitHub\\Eksamensprojekt-DDU\\DDUEksamenMain\\DDUEksamenMain\\stage.fxml").toUri().toURL()); // abs path to fxml file
+    FXMLLoader loader = new FXMLLoader(Paths.get(System.getProperty("user.home") + "\\Documents\\GitHub\\Eksamensprojekt-DDU\\DDUEksamenMain\\DDUEksamenMain\\Scene.fxml").toUri().toURL()); // abs path to fxml file
     final Parent sceneFromFXML = loader.load();
     final Map<String, Object> namespace = loader.getNamespace();
     final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);

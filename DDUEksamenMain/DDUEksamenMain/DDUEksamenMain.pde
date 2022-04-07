@@ -11,6 +11,69 @@ boolean[] pressed = new boolean[256];
 int x, y;
 ArrayList<cars> car;
 
+<<<<<<< Updated upstream
+=======
+protected PSurface initSurface() {
+  surface = (PSurfaceFX) super.initSurface();
+  final Canvas canvas = (Canvas) surface.getNative();
+  final Scene oldScene = canvas.getScene();
+  final Stage stage = (Stage) oldScene.getWindow();
+  
+  try {
+    FXMLLoader loader = new FXMLLoader(Paths.get(System.getProperty("user.home") + "\\Documents\\GitHub\\Eksamensprojekt-DDU\\DDUEksamenMain\\DDUEksamenMain\\stage.fxml").toUri().toURL()); // abs path to fxml file
+    final Parent sceneFromFXML = loader.load();
+    final Map<String, Object> namespace = loader.getNamespace();
+    final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
+    
+
+    final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
+    final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
+    
+    System.out.println(namespace.get("butt1"));
+    b1.setOnAction(new EventHandler<ActionEvent>() { 
+    @Override
+    public void handle(ActionEvent event) {
+          
+    System.out.println("KNAP 1"); //Skriv funktioner her
+    frameRate(30);
+    }
+});
+
+    b2.setOnAction(new EventHandler<ActionEvent>() {
+    @Override
+    public void handle(ActionEvent event) {
+      
+    System.out.println("KNAP 2");
+    frameRate(120);
+    }
+});
+
+    final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
+    System.out.println(namespace.get("anchorPane"));
+    pane.getChildren().add(canvas); // processing to stackPane
+  
+    
+    canvas.widthProperty().bind(pane.widthProperty()); // bind canvas dimensions to pane
+    canvas.heightProperty().bind(pane.heightProperty()); // bind canvas dimensions to pane
+
+    Platform.runLater(new Runnable() {
+
+      @Override
+        public void run() {
+        stage.setScene(newScene);
+        
+      }
+    }
+    );
+  } 
+  catch (IOException e) {
+    e.printStackTrace();
+  }
+  
+
+  return surface;
+}
+>>>>>>> Stashed changes
 
 void setup() {
   size(800, 800);

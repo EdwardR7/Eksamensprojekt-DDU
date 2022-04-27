@@ -20,7 +20,6 @@ int columns; // colums of board
 Road[][] vejFelt; //Vejfelter
 boolean[][] collision; //Collisiondetection
 
-boolean[] pressed = new boolean[256];
 
 int x, y;
 ArrayList<cars> car;
@@ -91,7 +90,7 @@ void setup() {
   size(800, 800,FX2D);
 
   rows = round(width/Scale);
-  columns = round(width/Scale);
+  columns = round(height/Scale);
 
   vejFelt = new Road[rows][columns];
   collision = new boolean[rows][columns];
@@ -99,11 +98,11 @@ void setup() {
   car = new ArrayList<cars>();
 
   for (int i = 0; i < 10; i++) {
-    car.add(new cars(round(random(0, columns)), round(random(0, rows))));
+    car.add(new cars(round(random(0, rows)), round(random(0, columns))));
   }
   for (int r = 0; r < rows; r++) {
     for (int R = 0; R < columns; R++) {
-      vejFelt[r][R] = new Road(r, R, 0, false);
+      vejFelt[r][R] = new Road(r, R, 1, false);
     }
   }
 }
@@ -139,20 +138,12 @@ void drawGrid() {
 }
 
 
-void keyPressed() {
-  pressed[keyCode] = true;
-}
-
-void keyReleased() {
-  pressed[keyCode] = false;
-}
-
 void mouseDragged() {
   try {
-    vejFelt[round(mouseY/Scale)][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
-    vejFelt[round(mouseY/Scale)][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
-    vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
-    vejFelt[round(mouseY/Scale)+1][round(mouseX/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
+    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
+    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
   } 
   catch( Exception e) {
   }

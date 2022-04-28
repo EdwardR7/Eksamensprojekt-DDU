@@ -20,12 +20,12 @@ class cars {
 
   void move() {
     try {
-      indexX = x/Scale;
-      indexY = y/Scale;
+      indexX = round(x/Scale);
+      indexY = round(y/Scale);
       collision[indexX][indexY] = true;
       int direction = round(random(8.9));
 
-      // execute(vejFelt[indexX][indexY].retning); // faktisk kode
+      //execute(vejFelt[indexX][indexY].retning); // faktisk kode
       execute(direction); 
     } 
     catch(Exception e) {

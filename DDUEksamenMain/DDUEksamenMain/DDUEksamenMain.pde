@@ -126,7 +126,7 @@ void draw() {
 }
 
 void drawGrid() {
-  stroke(200);
+  stroke(230);
   // Begin loop for columns
   for (int i = 0; i < height; i+=Scale) {
     line(0, i, width, i);

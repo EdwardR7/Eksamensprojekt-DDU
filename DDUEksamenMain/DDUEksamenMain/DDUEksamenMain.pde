@@ -13,16 +13,22 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 
-int Scale = 8; // size of each cell
+int Scale = 20; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
 Road[][] vejFelt; //Vejfelter
 boolean[][] collision; //Collisiondetection
-
+boolean[] pressed = new boolean[256];
 
 int x, y;
 ArrayList<cars> car;
+
+int rotate = 0;
+int tools = 0;
+
+PImage rImage;
+
 
 
 protected PSurface initSurface() {
@@ -30,41 +36,126 @@ protected PSurface initSurface() {
   final Canvas canvas = (Canvas) surface.getNative();
   final Scene oldScene = canvas.getScene();
   final Stage stage = (Stage) oldScene.getWindow();
-  
+
   try {
-    FXMLLoader loader = new FXMLLoader(Paths.get(System.getProperty("user.home"), "Documents", "GitHub", "Eksamensprojekt-DDU", "DDUEksamenMain", "DDUEksamenMain", "Scene.fxml").toUri().toURL()); // abs path to fxml file
+    FXMLLoader loader = new FXMLLoader(Paths.get(sketchPath(), "FXML", "Scene.fxml").toUri().toURL()); // abs path to fxml file
+
     final Parent sceneFromFXML = loader.load();
     final Map<String, Object> namespace = loader.getNamespace();
     final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
-    
+
 
     final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
     final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
-    
-    System.out.println(namespace.get("butt1"));
+    final Button b3 = (Button) namespace.get("butt3"); // get element by fx:id  
+    final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id  
+
+
+    //System.out.println(namespace.get("butt1"));
+
+
     b1.setOnAction(new EventHandler<ActionEvent>() { 
-    @Override
-    public void handle(ActionEvent event) {
-          
-    System.out.println("KNAP 1"); //Skriv funktioner her
-    frameRate(30);
+      @Override
+        public void handle(ActionEvent event) {
+        tools = 1;
+        rotate = 1;
+        rImage = loadImage("UpRight.PNG");
+        cursor(rImage);
+        System.out.println("Corner insert"); //Skriv funktioner her
+        frameRate(30);
+      }
     }
-});
+    );
 
     b2.setOnAction(new EventHandler<ActionEvent>() {
-    @Override
-    public void handle(ActionEvent event) {
-      
-    System.out.println("KNAP 2");
-    frameRate(120);
+      @Override
+        public void handle(ActionEvent event) {
+
+
+        rotate -= 1;
+        if (rotate<1) {
+          rotate = 4;
+        }
+        System.out.println(rotate);
+        //rotate left
+
+        if (tools == 1) {
+          switch(rotate) {
+          case 1: 
+            rImage = loadImage("UpRight.PNG");
+            break;
+          case 2: 
+            rImage = loadImage("UpLeft.PNG");
+            break;
+          case 3: 
+            rImage = loadImage("DownLeft.PNG");
+            break;
+          case 4: 
+            rImage = loadImage("DownRight.PNG");
+            break;
+          }
+          cursor(rImage);
+        }
+      }
     }
-});
+    );
+
+    b3.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+        public void handle(ActionEvent event) {
+
+
+
+        rotate += 1;
+        if (rotate>4) {
+          rotate = 1;
+        }
+
+
+        System.out.println(rotate);
+        //rotate right
+        if (tools == 1) {
+          switch(rotate) {
+          case 1: 
+            rImage = loadImage("UpRight.PNG");
+            break;
+          case 2: 
+            rImage = loadImage("UpLeft.PNG");
+            break;
+          case 3: 
+            rImage = loadImage("DownLeft.PNG");
+            break;
+          case 4: 
+            rImage = loadImage("DownRight.PNG");
+            break;
+          }
+          cursor(rImage);
+        }
+      }
+    }
+    );
+
+    b4.setOnAction(new EventHandler<ActionEvent>() {
+      @Override
+        public void handle(ActionEvent event) {
+        cursor(ARROW);
+        tools = 2;
+      }
+    }
+    );
+
+
+
+
+
+
+
 
     final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
     System.out.println(namespace.get("anchorPane"));
     pane.getChildren().add(canvas); // processing to stackPane
-  
-    
+
+
     canvas.widthProperty().bind(pane.widthProperty()); // bind canvas dimensions to pane
     canvas.heightProperty().bind(pane.heightProperty()); // bind canvas dimensions to pane
 
@@ -73,7 +164,6 @@ protected PSurface initSurface() {
       @Override
         public void run() {
         stage.setScene(newScene);
-        
       }
     }
     );
@@ -81,13 +171,15 @@ protected PSurface initSurface() {
   catch (IOException e) {
     e.printStackTrace();
   }
-  
+
 
   return surface;
 }
 
 void setup() {
-  size(800, 800,FX2D);
+  size(1400, 1400, FX2D);
+
+
 
   rows = round(width/Scale);
   columns = round(height/Scale);
@@ -109,6 +201,9 @@ void setup() {
 
 
 void draw() {
+
+
+
   background(-1);
   drawGrid();
 
@@ -138,21 +233,27 @@ void drawGrid() {
 }
 
 
-void mouseDragged() {
-  try {
-    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
-    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
-    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 1, true);
-    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 1, true);
-  } 
-  catch( Exception e) {
-  }
-}
+
 
 void mouseClicked() {
-  try {
-    car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
-  }
-  catch( Exception e) {
+
+
+  switch(tools) { //Corner roadpiece
+  case 1:
+
+    try {
+      RoadPieces roadPiece = new RoadPieces();
+      roadPiece.Corners();
+    }
+    catch( Exception e) {
+    }
+    break;
+  case 2:
+    try {
+      car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+    }
+    catch( Exception e) {
+    }
+    break;
   }
 }

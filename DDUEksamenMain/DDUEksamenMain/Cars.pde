@@ -23,10 +23,10 @@ class cars {
       indexX = round(x/Scale);
       indexY = round(y/Scale);
       collision[indexX][indexY] = true;
-      int direction = round(random(8.9));
+      //int direction = round(random(8.9));
 
-      //execute(vejFelt[indexX][indexY].retning); // faktisk kode
-      execute(direction); 
+      execute(vejFelt[indexX][indexY].retning); // faktisk kode
+      //execute(direction); 
     } 
     catch(Exception e) {
     }

@@ -13,15 +13,13 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 
-int Scale = 8; // size of each cell
+int Scale = 16; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
 Road[][] vejFelt; //Vejfelter
 boolean[][] collision; //Collisiondetection
-boolean[] pressed = new boolean[256];
 
-int x, y;
 ArrayList<cars> car;
 
 int rotate = 0;
@@ -44,11 +42,10 @@ protected PSurface initSurface() {
     final Map<String, Object> namespace = loader.getNamespace();
     final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
 
-
     final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
     final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
     final Button b3 = (Button) namespace.get("butt3"); // get element by fx:id  
-    final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id  
+    final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id 
 
     //System.out.println(namespace.get("butt1"));
 
@@ -57,10 +54,7 @@ protected PSurface initSurface() {
         public void handle(ActionEvent event) {
         tools = 1;
         rotate = 1;
-        rImage = loadImage("UpRight.PNG");
-        cursor(rImage);
-        System.out.println("Corner insert"); //Skriv funktioner her
-        frameRate(30);
+        displayCursorImage();
       }
     }
     );
@@ -127,6 +121,7 @@ protected PSurface initSurface() {
 
 void setup() {
   size(800, 800, FX2D);
+  frameRate(30);
 
   rows = round(width/Scale);
   columns = round(height/Scale);
@@ -155,14 +150,12 @@ void draw() {
       vejFelt[r][R].display();
     }
   }
-
   for (cars c : car) {
     c.move();
     c.display();
   }
   text(frameRate, 20, 20);
   text("KøScore: " + queueCounter + " (Lavere = bedre)", 20, 40);
-  println(queueCounter);
 }
 
 void drawGrid() {
@@ -178,10 +171,8 @@ void drawGrid() {
 }
 
 void mouseClicked() {
-
   switch(tools) { //Corner roadpiece
   case 1:
-
     try {
       RoadPieces roadPiece = new RoadPieces();
       roadPiece.Corners();

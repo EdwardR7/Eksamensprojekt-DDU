@@ -26,7 +26,7 @@ class cars {
       //int direction = round(random(8.9));
 
       execute(vejFelt[indexX][indexY].retning); // faktisk kode
-      //execute(direction); 
+      //execute(direction);
     } 
     catch(Exception e) {
     }
@@ -37,55 +37,87 @@ class cars {
     switch(type) {
       //Tjekker om der er nogle inde for banen, om det er et vejfelt, og om det felt allerede er optaget
     case 1:
-      if (indexX > 0 && !collision[indexX-1][indexY] && vejFelt[indexX-1][indexY].roadtile) {
-        x-= Scale; //GO LEFT
-        collision[indexX][indexY] = false;
+      if (indexX > 0 && vejFelt[indexX-1][indexY].roadtile) {
+        if (!collision[indexX-1][indexY]) {
+          x-= Scale; //GO LEFT
+          collision[indexX][indexY] = false;
+        } else {
+          queueCounter++;
+        }
       } 
       break;
     case 2:
-      if (indexX < rows-1 && !collision[indexX+1][indexY] && vejFelt[indexX+1][indexY].roadtile) {
-        x+= Scale; //GO RIGHT;
-        collision[indexX][indexY] = false;
+      if (indexX < rows-1 && vejFelt[indexX+1][indexY].roadtile) {
+        if (!collision[indexX+1][indexY]) {
+          x+= Scale; //GO RIGHT;
+          collision[indexX][indexY] = false;
+        } else {
+          queueCounter++;
+        }
       }
       break;
     case 3: 
-      if (indexY > 0 && !collision[indexX][indexY-1] && vejFelt[indexX][indexY-1].roadtile) {
+      if (indexY > 0 && vejFelt[indexX][indexY-1].roadtile) {
+        if(!collision[indexX][indexY-1]){
         y-= Scale; // GO UP
         collision[indexX][indexY] = false;
+      } else {
+          queueCounter++;
+        }
       }
       break;
     case 4: 
-      if (indexY < columns-1 &&!collision[indexX][indexY+1] && vejFelt[indexX][indexY+1].roadtile) {
+      if (indexY < columns-1 && vejFelt[indexX][indexY+1].roadtile) {
+        if(!collision[indexX][indexY+1]){
         y+= Scale; // GO DOWN
         collision[indexX][indexY] = false;
+        }else {
+          queueCounter++;
+        }
       }
       break;
     case 5:
-      if (indexX > 0 && indexY > 0 && !collision[indexX-1][indexY-1] && vejFelt[indexX-1][indexY-1].roadtile) {
+      if (indexX > 0 && indexY > 0 && vejFelt[indexX-1][indexY-1].roadtile) {
+        if(!collision[indexX-1][indexY-1]){
         x-= Scale; //GO LEFT
         y-= Scale; // GO UP
         collision[indexX][indexY] = false;
-      } 
+      }else {
+          queueCounter++;
+        }
+      }
       break;
     case 6:
-      if (indexX > 0 && indexY < columns-1 && !collision[indexX-1][indexY+1] && vejFelt[indexX-1][indexY+1].roadtile) {
+      if (indexX > 0 && indexY < columns-1 && vejFelt[indexX-1][indexY+1].roadtile) {
+        if(!collision[indexX-1][indexY+1]){
         x-= Scale; //GO LEFT
         y+= Scale; // GO DOWN
         collision[indexX][indexY] = false;
-      } 
+      }else {
+          queueCounter++;
+        }
+      }
       break;
     case 7:
-      if (indexX < rows-1 && indexY > 0 && !collision[indexX+1][indexY-1] && vejFelt[indexX+1][indexY-1].roadtile) {
+      if (indexX < rows-1 && indexY > 0 && vejFelt[indexX+1][indexY-1].roadtile) {
+        if(!collision[indexX+1][indexY-1]){
         x+= Scale; //GO RIGHT;
         y-= Scale; // GO UP
         collision[indexX][indexY] = false;
+      }else {
+          queueCounter++;
+        }
       }
       break;
     case 8:
-      if (indexX < rows-1 && indexY < columns-1 && !collision[indexX+1][indexY+1] && vejFelt[indexX+1][indexY+1].roadtile) {
+      if (indexX < rows-1 && indexY < columns-1 && vejFelt[indexX+1][indexY+1].roadtile) {
+        if(!collision[indexX+1][indexY+1]){
         x+= Scale; //GO RIGHT;
         y+= Scale; // GO DOWN
         collision[indexX][indexY] = false;
+      }else {
+          queueCounter++;
+        }
       }
       break;
     }

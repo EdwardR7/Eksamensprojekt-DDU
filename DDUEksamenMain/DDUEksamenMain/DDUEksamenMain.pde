@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 
-int Scale = 20; // size of each cell
+int Scale = 8; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -29,7 +29,7 @@ int tools = 0;
 
 PImage rImage;
 
-
+int queueCounter;
 
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
@@ -50,9 +50,7 @@ protected PSurface initSurface() {
     final Button b3 = (Button) namespace.get("butt3"); // get element by fx:id  
     final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id  
 
-
     //System.out.println(namespace.get("butt1"));
-
 
     b1.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
@@ -104,14 +102,11 @@ protected PSurface initSurface() {
       @Override
         public void handle(ActionEvent event) {
 
-
-
         rotate += 1;
         if (rotate>4) {
           rotate = 1;
         }
-
-
+        
         System.out.println(rotate);
         //rotate right
         if (tools == 1) {
@@ -144,13 +139,6 @@ protected PSurface initSurface() {
     }
     );
 
-
-
-
-
-
-
-
     final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
     System.out.println(namespace.get("anchorPane"));
     pane.getChildren().add(canvas); // processing to stackPane
@@ -172,14 +160,11 @@ protected PSurface initSurface() {
     e.printStackTrace();
   }
 
-
   return surface;
 }
 
 void setup() {
-  size(1400, 1400, FX2D);
-
-
+  size(800, 800, FX2D);
 
   rows = round(width/Scale);
   columns = round(height/Scale);
@@ -201,9 +186,6 @@ void setup() {
 
 
 void draw() {
-
-
-
   background(-1);
   drawGrid();
 
@@ -218,6 +200,8 @@ void draw() {
     c.display();
   }
   text(frameRate, 20, 20);
+  text("KøScore: " + queueCounter + " (Lavere = bedre)", 20, 40);
+  println(queueCounter);
 }
 
 void drawGrid() {
@@ -236,7 +220,6 @@ void drawGrid() {
 
 
 void mouseClicked() {
-
 
   switch(tools) { //Corner roadpiece
   case 1:

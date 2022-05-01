@@ -74,26 +74,7 @@ protected PSurface initSurface() {
         if (rotate<1) {
           rotate = 4;
         }
-        System.out.println(rotate);
-        //rotate left
-
-        if (tools == 1) {
-          switch(rotate) {
-          case 1: 
-            rImage = loadImage("UpRight.PNG");
-            break;
-          case 2: 
-            rImage = loadImage("UpLeft.PNG");
-            break;
-          case 3: 
-            rImage = loadImage("DownLeft.PNG");
-            break;
-          case 4: 
-            rImage = loadImage("DownRight.PNG");
-            break;
-          }
-          cursor(rImage);
-        }
+        displayCursorImage();
       }
     }
     );
@@ -106,26 +87,7 @@ protected PSurface initSurface() {
         if (rotate>4) {
           rotate = 1;
         }
-        
-        System.out.println(rotate);
-        //rotate right
-        if (tools == 1) {
-          switch(rotate) {
-          case 1: 
-            rImage = loadImage("UpRight.PNG");
-            break;
-          case 2: 
-            rImage = loadImage("UpLeft.PNG");
-            break;
-          case 3: 
-            rImage = loadImage("DownLeft.PNG");
-            break;
-          case 4: 
-            rImage = loadImage("DownRight.PNG");
-            break;
-          }
-          cursor(rImage);
-        }
+        displayCursorImage();
       }
     }
     );
@@ -184,7 +146,6 @@ void setup() {
   }
 }
 
-
 void draw() {
   background(-1);
   drawGrid();
@@ -216,9 +177,6 @@ void drawGrid() {
   }
 }
 
-
-
-
 void mouseClicked() {
 
   switch(tools) { //Corner roadpiece
@@ -238,5 +196,25 @@ void mouseClicked() {
     catch( Exception e) {
     }
     break;
+  }
+}
+
+void displayCursorImage() {
+  if (tools == 1) {
+    switch(rotate) {
+    case 1: 
+      rImage = loadImage("UpRight.PNG");
+      break;
+    case 2: 
+      rImage = loadImage("UpLeft.PNG");
+      break;
+    case 3: 
+      rImage = loadImage("DownLeft.PNG");
+      break;
+    case 4: 
+      rImage = loadImage("DownRight.PNG");
+      break;
+    }
+    cursor(rImage);
   }
 }

@@ -120,7 +120,7 @@ protected PSurface initSurface() {
 }
 
 void setup() {
-  size(800, 800, FX2D);
+  size(800, 800, FX2D); // FX2D bruger funktionen  initSurface()
   frameRate(30);
 
   rows = round(width/Scale);

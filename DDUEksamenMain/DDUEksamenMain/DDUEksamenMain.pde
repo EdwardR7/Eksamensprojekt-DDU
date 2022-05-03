@@ -27,6 +27,8 @@ int rot2;
 int rot3;
 int tools;
 
+boolean Check = false;
+
 PImage rImage;
 
 //Vejlinjer
@@ -59,8 +61,24 @@ protected PSurface initSurface() {
     final Button b8 = (Button) namespace.get("butt8"); // get element by fx:id  //insert SingleRoad
     final Button b9 = (Button) namespace.get("butt9"); // get element by fx:id  //insert SingleRoad ROTATE LEFT
     final Button b10 = (Button) namespace.get("butt10"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
+    
+    final CheckBox c1 = (CheckBox) namespace.get("check1");
 
 
+    c1.setOnAction(new EventHandler<ActionEvent>() { 
+      @Override
+        public void handle(ActionEvent event) {
+          try{
+         if(c1.isSelected()){
+           Check = true;
+         }else{
+           Check = false;
+         }
+         }catch(Exception e){
+         }
+      }
+    }
+    );
 
     //CORNERPIECE BUTTON
     b1.setOnAction(new EventHandler<ActionEvent>() { 

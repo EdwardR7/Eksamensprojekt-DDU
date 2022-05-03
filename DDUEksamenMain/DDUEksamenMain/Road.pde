@@ -22,7 +22,9 @@ class Road {
       fill(100, 100, 100);
       stroke(75);
       rect(x, y, Scale, Scale);
+      if(Check){
       roadDirections();
+      }
     }
   }
 

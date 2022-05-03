@@ -22,10 +22,15 @@ boolean[][] collision; //Collisiondetection
 
 ArrayList<cars> car;
 
-int rotate = 0;
-int tools = 0;
+int rot1;
+int rot2;
+int rot3;
+int tools;
 
 PImage rImage;
+
+//Vejlinjer
+PShape l1; PShape l2; PShape l3; PShape l4; PShape l5; PShape l6; PShape l7; PShape l8; PShape l9; PShape l10; PShape l11; PShape l12; PShape l13; PShape l14; PShape l15; PShape l16; PShape l17; PShape l18; PShape l19; PShape l20; PShape l21; PShape l22; PShape l23; PShape l24; 
 
 int queueCounter;
 
@@ -42,50 +47,57 @@ protected PSurface initSurface() {
     final Map<String, Object> namespace = loader.getNamespace();
     final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
 
-    final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  
-    final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  
-    final Button b3 = (Button) namespace.get("butt3"); // get element by fx:id  
-    final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id 
+    final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  //insert corners
+    final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  //insert corners ROTATE LEFT
+    final Button b3 = (Button) namespace.get("butt3"); // get element by fx:id  //insert corners ROTATE RIGHT
+    final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id //insert cars
 
-    //System.out.println(namespace.get("butt1"));
+    final Button b5 = (Button) namespace.get("butt5"); // get element by fx:id  //insert DoubleRoad
+    final Button b6 = (Button) namespace.get("butt6"); // get element by fx:id  //insert DoubleRoad ROTATE LEFT
+    final Button b7 = (Button) namespace.get("butt7"); // get element by fx:id  //insert DoubleRoad ROTATE RIGHT
 
+    final Button b8 = (Button) namespace.get("butt8"); // get element by fx:id  //insert SingleRoad
+    final Button b9 = (Button) namespace.get("butt9"); // get element by fx:id  //insert SingleRoad ROTATE LEFT
+    final Button b10 = (Button) namespace.get("butt10"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
+
+
+
+    //CORNERPIECE BUTTON
     b1.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
         public void handle(ActionEvent event) {
         tools = 1;
-        rotate = 1;
+        rot1 = 1;
         displayCursorImage();
       }
     }
     );
-
-    b2.setOnAction(new EventHandler<ActionEvent>() {
+    b2.setOnAction(new EventHandler<ActionEvent>() { //ROTATE LEFT
+      @Override
+        public void handle(ActionEvent event) {
+        rot1 -= 1;
+        if (rot1<1) {
+          rot1 = 4;
+        }
+        displayCursorImage();
+      }
+    }
+    );
+    b3.setOnAction(new EventHandler<ActionEvent>() { //ROTATE RIGHT
       @Override
         public void handle(ActionEvent event) {
 
-
-        rotate -= 1;
-        if (rotate<1) {
-          rotate = 4;
+        rot1 += 1;
+        if (rot1>4) {
+          rot1 = 1;
         }
         displayCursorImage();
       }
     }
     );
 
-    b3.setOnAction(new EventHandler<ActionEvent>() {
-      @Override
-        public void handle(ActionEvent event) {
 
-        rotate += 1;
-        if (rotate>4) {
-          rotate = 1;
-        }
-        displayCursorImage();
-      }
-    }
-    );
-
+    //INSERT CARS BUTTON
     b4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
         public void handle(ActionEvent event) {
@@ -94,6 +106,78 @@ protected PSurface initSurface() {
       }
     }
     );
+
+
+    //DOUBLEROAD BUTTON
+    b5.setOnAction(new EventHandler<ActionEvent>() { 
+      @Override
+        public void handle(ActionEvent event) {
+        tools = 3;
+        rot2 = 1;
+        displayCursorImage();
+      }
+    }
+    );
+    b6.setOnAction(new EventHandler<ActionEvent>() { //ROTATE LEFT
+      @Override
+        public void handle(ActionEvent event) {
+        rot2 -= 1;
+        if (rot2<1) {
+          rot2 = 4;
+        }
+        displayCursorImage();
+      }
+    }
+    );    
+    b7.setOnAction(new EventHandler<ActionEvent>() { //ROTATE RIGHT
+      @Override
+        public void handle(ActionEvent event) {
+        rot2 += 1;
+        if (rot2>4) {
+          rot2 = 1;
+        }
+        displayCursorImage();
+      }
+    }
+    );
+    
+    
+    
+    
+     //SINGLEROAD BUTTON
+    b8.setOnAction(new EventHandler<ActionEvent>() { 
+      @Override
+        public void handle(ActionEvent event) {
+        tools = 4;
+        rot3 = 1;
+        displayCursorImage();
+      }
+    }
+    );
+    b9.setOnAction(new EventHandler<ActionEvent>() { //ROTATE LEFT
+      @Override
+        public void handle(ActionEvent event) {
+        rot3 -= 1;
+        if (rot3<1) {
+          rot3 = 8;
+        }
+        displayCursorImage();
+      }
+    }
+    );    
+    b10.setOnAction(new EventHandler<ActionEvent>() { //ROTATE RIGHT
+      @Override
+        public void handle(ActionEvent event) {
+        rot3 += 1;
+        if (rot3>8) {
+          rot3 = 1;
+        }
+        displayCursorImage();
+      }
+    }
+    );
+
+
 
     final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
     System.out.println(namespace.get("anchorPane"));
@@ -156,6 +240,15 @@ void draw() {
   }
   text(frameRate, 20, 20);
   text("KøScore: " + queueCounter + " (Lavere = bedre)", 20, 40);
+
+  try {
+    if (tools == 1) {
+      rImage.resize(50, 50);
+      image(rImage, mouseX, mouseY);
+    }
+  }
+  catch(Exception e) {
+  }
 }
 
 void drawGrid() {
@@ -180,19 +273,39 @@ void mouseClicked() {
     catch( Exception e) {
     }
     break;
-  case 2:
+  case 2: //Insert car
     try {
       car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
     }
     catch( Exception e) {
     }
     break;
+
+  case 3://doubleRoadpiece
+    try {
+      RoadPieces roadPiece = new RoadPieces();
+      roadPiece.doubleRoad();
+    }
+    catch( Exception e) {
+    }
+
+    break;
+
+  case 4://singleRoadpiece
+    try {
+      RoadPieces roadPiece = new RoadPieces();
+      roadPiece.singleRoad();
+    }
+    catch( Exception e) {
+    }
+
+    break;
   }
 }
 
 void displayCursorImage() {
   if (tools == 1) {
-    switch(rotate) {
+    switch(rot1) {
     case 1: 
       rImage = loadImage("UpRight.PNG");
       break;
@@ -206,6 +319,7 @@ void displayCursorImage() {
       rImage = loadImage("DownRight.PNG");
       break;
     }
-    cursor(rImage);
+  }else if(tools == 2){
+    
   }
 }

@@ -138,7 +138,6 @@ protected PSurface initSurface() {
     }
     );
 
-
     //INSERT CARS BUTTON
     b4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -148,7 +147,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
 
     //DOUBLEROAD BUTTON
     b5.setOnAction(new EventHandler<ActionEvent>() { 

@@ -32,30 +32,6 @@ boolean Check = false;
 PImage rImage;
 
 //Vejlinjer
-PShape l1; 
-PShape l2; 
-PShape l3; 
-PShape l4; 
-PShape l5; 
-PShape l6; 
-PShape l7; 
-PShape l8; 
-PShape l9; 
-PShape l10; 
-PShape l11; 
-PShape l12; 
-PShape l13; 
-PShape l14; 
-PShape l15; 
-PShape l16; 
-PShape l17; 
-PShape l18; 
-PShape l19; 
-PShape l20; 
-PShape l21; 
-PShape l22; 
-PShape l23; 
-PShape l24; 
 
 int queueCounter;
 

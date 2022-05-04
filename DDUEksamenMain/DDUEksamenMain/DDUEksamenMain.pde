@@ -79,7 +79,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
     //CORNERPIECE BUTTON
     b1.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
@@ -104,7 +103,6 @@ protected PSurface initSurface() {
     b3.setOnAction(new EventHandler<ActionEvent>() { //ROTATE RIGHT
       @Override
         public void handle(ActionEvent event) {
-
         rot1 += 1;
         if (rot1>4) {
           rot1 = 1;
@@ -113,7 +111,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
     //INSERT CARS BUTTON
     b4.setOnAction(new EventHandler<ActionEvent>() {
       @Override
@@ -123,7 +120,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
     //DOUBLEROAD BUTTON
     b5.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
@@ -156,7 +152,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
     //SINGLEROAD BUTTON
     b8.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
@@ -189,8 +184,6 @@ protected PSurface initSurface() {
       }
     }
     );
-
-
 
     final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
     System.out.println(namespace.get("anchorPane"));

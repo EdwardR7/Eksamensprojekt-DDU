@@ -18,9 +18,7 @@ class RoadPieces {
 
       vejFelt[round(mouseX/Scale+1)][round(mouseY/Scale+2)] = new Road(round(mouseX/Scale+1), round(mouseY/Scale+2), 3, true);
 
-
       break;
-
 
     case 2: //UpLeft
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 1, true);
@@ -35,9 +33,7 @@ class RoadPieces {
 
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale+1)] = new Road(round(mouseX/Scale), round(mouseY/Scale+1), 2, true);
 
-
       break;
-
 
     case 3: //DownLeft
       vejFelt[round(mouseX/Scale+2)][round(mouseY/Scale)] = new Road(round(mouseX/Scale+2), round(mouseY/Scale), 3, true);

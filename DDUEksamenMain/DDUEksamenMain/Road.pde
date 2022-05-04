@@ -22,8 +22,8 @@ class Road {
       fill(100, 100, 100);
       stroke(75);
       rect(x, y, Scale, Scale);
-      if(Check){
-      roadDirections();
+      if (Check) {
+        roadDirections();
       }
     }
   }
@@ -38,7 +38,8 @@ class Road {
 
 
   void roadDirections() {
-    if (this.retning == 1) {
+    switch(retning) {
+    case 1:
       l1 = createShape(LINE, x, y+(Scale*1/2), x+Scale, y+(Scale*1/2));
       l1.setStroke(color(255, 0, 0));
       shape(l1);
@@ -50,7 +51,9 @@ class Road {
       l3 = createShape(LINE, x, y+(Scale*1/2), x+(Scale*1/2), y+Scale);
       l3.setStroke(color(255, 0, 0));
       shape(l3);
-    } else if (this.retning == 2) {
+      break;
+
+    case 2:
       l4 = createShape(LINE, x, y+(Scale*1/2), x+Scale, y+(Scale*1/2));
       l4.setStroke(color(255, 0, 0));
       shape(l4);
@@ -62,7 +65,8 @@ class Road {
       l6 = createShape(LINE, x+(Scale*1/2), y, x+Scale, y+(Scale*1/2));
       l6.setStroke(color(255, 0, 0));
       shape(l6);
-    } else if (this.retning == 3) {
+      break;
+    case 3:
       l7 = createShape(LINE, x+(Scale*1/2), y, x+(Scale*1/2), y+Scale);
       l7.setStroke(color(255, 0, 0));
       shape(l7);
@@ -74,7 +78,8 @@ class Road {
       l9 = createShape(LINE, x+(Scale*1/2), y, x+Scale, y+(Scale*1/2));
       l9.setStroke(color(255, 0, 0));
       shape(l9);
-    } else if (this.retning == 4) {
+      break;
+    case 4:
       l10 = createShape(LINE, x+(Scale*1/2), y, x+(Scale*1/2), y+Scale);
       l10.setStroke(color(255, 0, 0));
       shape(l10);
@@ -86,7 +91,8 @@ class Road {
       l12 = createShape(LINE, x+(Scale*1/2), y+Scale, x+Scale, y+(Scale*1/2));
       l12.setStroke(color(255, 0, 0));
       shape(l12);
-    } else if (this.retning == 5) {
+    break;
+    case 5:
       l13 = createShape(LINE, x, y, x+Scale, y+Scale);
       l13.setStroke(color(255, 0, 0));
       shape(l13);
@@ -98,7 +104,8 @@ class Road {
       l15 = createShape(LINE, x, y, x+(Scale*3/4), y+(Scale*1/4));
       l15.setStroke(color(255, 0, 0));
       shape(l15);
-    } else if (this.retning == 6) {
+    break;
+    case 6:
       l16 = createShape(LINE, x, y+Scale, x+Scale, y);
       l16.setStroke(color(255, 0, 0));
       shape(l16);
@@ -110,7 +117,8 @@ class Road {
       l18 = createShape(LINE, x, y+Scale, x+(Scale*3/4), y+(Scale*3/4));
       l18.setStroke(color(255, 0, 0));
       shape(l18);
-    } else if (this.retning == 7) {
+    break;
+    case 7:
       l19 = createShape(LINE, x, y+Scale, x+Scale, y);
       l19.setStroke(color(255, 0, 0));
       shape(l19);
@@ -122,7 +130,8 @@ class Road {
       l21 = createShape(LINE, x+(Scale*3/4), y+(Scale*3/4), x+Scale, y);
       l21.setStroke(color(255, 0, 0));
       shape(l21);
-    } else if (this.retning == 8) {
+   break;
+   case 8:
       l22 = createShape(LINE, x, y, x+Scale, y+Scale);
       l22.setStroke(color(255, 0, 0));
       shape(l22);
@@ -134,6 +143,7 @@ class Road {
       l24 = createShape(LINE, x+(Scale*1/4), y+(Scale*3/4), x+Scale, y+Scale);
       l24.setStroke(color(255, 0, 0));
       shape(l24);
+      break;
     }
   }
 }

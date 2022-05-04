@@ -32,7 +32,30 @@ boolean Check = false;
 PImage rImage;
 
 //Vejlinjer
-PShape l1; PShape l2; PShape l3; PShape l4; PShape l5; PShape l6; PShape l7; PShape l8; PShape l9; PShape l10; PShape l11; PShape l12; PShape l13; PShape l14; PShape l15; PShape l16; PShape l17; PShape l18; PShape l19; PShape l20; PShape l21; PShape l22; PShape l23; PShape l24; 
+PShape l1; 
+PShape l2; 
+PShape l3; 
+PShape l4; 
+PShape l5; 
+PShape l6; 
+PShape l7; 
+PShape l8; 
+PShape l9; 
+PShape l10; 
+PShape l11; 
+PShape l12; 
+PShape l13; 
+PShape l14; 
+PShape l15; 
+PShape l16; 
+PShape l17; 
+PShape l18; 
+PShape l19; 
+PShape l20; 
+PShape l21; 
+PShape l22; 
+PShape l23; 
+PShape l24; 
 
 int queueCounter;
 
@@ -61,21 +84,22 @@ protected PSurface initSurface() {
     final Button b8 = (Button) namespace.get("butt8"); // get element by fx:id  //insert SingleRoad
     final Button b9 = (Button) namespace.get("butt9"); // get element by fx:id  //insert SingleRoad ROTATE LEFT
     final Button b10 = (Button) namespace.get("butt10"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
-    
+
     final CheckBox c1 = (CheckBox) namespace.get("check1");
 
 
     c1.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
         public void handle(ActionEvent event) {
-          try{
-         if(c1.isSelected()){
-           Check = true;
-         }else{
-           Check = false;
-         }
-         }catch(Exception e){
-         }
+        try {
+          if (c1.isSelected()) {
+            Check = true;
+          } else {
+            Check = false;
+          }
+        }
+        catch(Exception e) {
+        }
       }
     }
     );
@@ -158,11 +182,8 @@ protected PSurface initSurface() {
       }
     }
     );
-    
-    
-    
-    
-     //SINGLEROAD BUTTON
+
+    //SINGLEROAD BUTTON
     b8.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
         public void handle(ActionEvent event) {
@@ -337,7 +358,6 @@ void displayCursorImage() {
       rImage = loadImage("DownRight.PNG");
       break;
     }
-  }else if(tools == 2){
-    
+  } else if (tools == 2) {
   }
 }

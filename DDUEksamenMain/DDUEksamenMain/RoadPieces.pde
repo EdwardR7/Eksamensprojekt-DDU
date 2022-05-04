@@ -3,7 +3,7 @@ class RoadPieces {
 
   void Corners() { //size 61x61 pixels for images
     switch(rot1) {
-      //1 = left     2 = right      3 = up        4 = down      5 = leftup      6 = leftdown      7 = rightup      8 = rightdown
+      //1 = left     2 = right      3 = up        4 = down      5 = leftup      6 = leftdown      7 = rightup      8 = rightdown;  in the constructor of road
     case 1: //UpRight
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 4, true);
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale+1)] = new Road(round(mouseX/Scale), round(mouseY/Scale+1), 4, true);

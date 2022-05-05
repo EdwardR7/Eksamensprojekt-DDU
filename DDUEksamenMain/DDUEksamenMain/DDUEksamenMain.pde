@@ -232,7 +232,7 @@ void setup() {
 }
 
 void draw() {
-  background(-1);
+  background(50,205,50);
   drawGrid();
 
   for (int r = 0; r < rows; r++) {
@@ -258,7 +258,7 @@ void draw() {
 }
 
 void drawGrid() {
-  stroke(230);
+  stroke(34,139,34);
   // Begin loop for columns
   for (int i = 0; i < height; i+=Scale) {
     line(0, i, width, i);

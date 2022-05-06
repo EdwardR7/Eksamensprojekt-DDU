@@ -40,25 +40,8 @@ class Road {
 
   void roadDirections() {
     stroke(255);
-    
-    //Alle Vejlinjer
-    l1 = createShape(LINE, x, y+(Scale*1/2), x+Scale, y+(Scale*1/2));
-    l2 = createShape(LINE, x, y+(Scale*1/2), x+(Scale*1/2), y);
-    l3 = createShape(LINE, x, y+(Scale*1/2), x+(Scale*1/2), y+Scale);
-    l4 = createShape(LINE, x+(Scale*1/2), y+Scale, x+Scale, y+(Scale*1/2));
-    l5 = createShape(LINE, x+(Scale*1/2), y, x+Scale, y+(Scale*1/2));
-    l6 = createShape(LINE, x+(Scale*1/2), y, x+(Scale*1/2), y+Scale);
-    l7 = createShape(LINE, x, y, x+Scale, y+Scale);
-    l8 = createShape(LINE, x, y, x+(Scale*1/4), y+(Scale*3/4));
-    l9 = createShape(LINE, x, y, x+(Scale*3/4), y+(Scale*1/4));
-    l10 = createShape(LINE, x, y+Scale, x+Scale, y);
-    l11 = createShape(LINE, x, y+Scale, x+(Scale*1/4), y+(Scale*1/4));
-    l12 = createShape(LINE, x, y+Scale, x+(Scale*3/4), y+(Scale*3/4));
-    l13 = createShape(LINE, x+(Scale*1/4), y+(Scale*1/4), x+Scale, y);
-    l14 = createShape(LINE, x+(Scale*3/4), y+(Scale*3/4), x+Scale, y);
-    l15 = createShape(LINE, x+(Scale*3/4), y+(Scale*1/4), x+Scale, y+Scale);
-    l16 = createShape(LINE, x+(Scale*1/4), y+(Scale*3/4), x+Scale, y+Scale);
 
+    vejLinjer();
     switch(retning) {
     case 1:
       shape(l1);
@@ -101,5 +84,24 @@ class Road {
       shape(l16);
       break;
     }
+  }
+  void vejLinjer() {
+    //Alle Vejlinjer
+    l1 = createShape(LINE, x, y+(Scale*1/2), x+Scale, y+(Scale*1/2));
+    l2 = createShape(LINE, x, y+(Scale*1/2), x+(Scale*1/2), y);
+    l3 = createShape(LINE, x, y+(Scale*1/2), x+(Scale*1/2), y+Scale);
+    l4 = createShape(LINE, x+(Scale*1/2), y+Scale, x+Scale, y+(Scale*1/2));
+    l5 = createShape(LINE, x+(Scale*1/2), y, x+Scale, y+(Scale*1/2));
+    l6 = createShape(LINE, x+(Scale*1/2), y, x+(Scale*1/2), y+Scale);
+    l7 = createShape(LINE, x, y, x+Scale, y+Scale);
+    l8 = createShape(LINE, x, y, x+(Scale*1/4), y+(Scale*3/4));
+    l9 = createShape(LINE, x, y, x+(Scale*3/4), y+(Scale*1/4));
+    l10 = createShape(LINE, x, y+Scale, x+Scale, y);
+    l11 = createShape(LINE, x, y+Scale, x+(Scale*1/4), y+(Scale*1/4));
+    l12 = createShape(LINE, x, y+Scale, x+(Scale*3/4), y+(Scale*3/4));
+    l13 = createShape(LINE, x+(Scale*1/4), y+(Scale*1/4), x+Scale, y);
+    l14 = createShape(LINE, x+(Scale*3/4), y+(Scale*3/4), x+Scale, y);
+    l15 = createShape(LINE, x+(Scale*3/4), y+(Scale*1/4), x+Scale, y+Scale);
+    l16 = createShape(LINE, x+(Scale*1/4), y+(Scale*3/4), x+Scale, y+Scale);
   }
 }

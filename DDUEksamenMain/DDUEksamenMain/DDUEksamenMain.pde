@@ -239,6 +239,7 @@ void draw() {
     c.move();
     c.display();
   }
+  fill(1);
   text(frameRate, 20, 20);
   text("KøScore: " + queueCounter + " (Lavere = bedre)", 20, 40);
 

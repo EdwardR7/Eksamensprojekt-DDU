@@ -113,7 +113,6 @@ class cars {
       }
   }
 
-
   PVector retning(boolean border, Road road, PVector destination) {
     if (border && road.roadtile) {
       if (!road.collision) {

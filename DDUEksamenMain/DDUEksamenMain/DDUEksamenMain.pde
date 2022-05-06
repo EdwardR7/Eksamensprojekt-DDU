@@ -18,7 +18,6 @@ int rows; // rows of board
 int columns; // colums of board
 
 Road[][] vejFelt; //Vejfelter
-boolean[][] collision; //Collisiondetection
 
 ArrayList<cars> car;
 
@@ -217,13 +216,9 @@ void setup() {
   columns = round(height/Scale);
 
   vejFelt = new Road[rows][columns];
-  collision = new boolean[rows][columns];
 
   car = new ArrayList<cars>();
 
-  for (int i = 0; i < 10; i++) {
-    car.add(new cars(round(random(0, rows)), round(random(0, columns))));
-  }
   for (int r = 0; r < rows; r++) {
     for (int R = 0; R < columns; R++) {
       vejFelt[r][R] = new Road(r, R, 1, false);

@@ -4,17 +4,17 @@ class Road {
   int indexX, indexY;
   int retning;
   boolean roadtile;
+  boolean collision;
 
   //Vejlinjer
   PShape l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16;
-
-  Road[] neighbors = new Road[4];
 
   Road(int x, int y, int retning, boolean roadtile) {
     this.x = round(x*Scale);
     this.y = round(y*Scale);
     this.retning = retning;
     this.roadtile = roadtile;
+    this.collision = false;
 
     indexX = x/Scale;
     indexY = y/Scale;
@@ -29,13 +29,6 @@ class Road {
         roadDirections();
       }
     }
-  }
-
-  void addNeighbors() {
-    neighbors[1] = vejFelt[indexY][indexX-1]; // LEFT NEIGHBOR
-    neighbors[2] = vejFelt[indexY][indexX+1]; // RIGHT NEIGHBOR
-    neighbors[3] = vejFelt[indexY-1][indexX]; // TOP NEIGHBOR
-    neighbors[4] = vejFelt[indexY+1][indexX]; // BOTTOM NEIGHBOR
   }
 
   void roadDirections() {

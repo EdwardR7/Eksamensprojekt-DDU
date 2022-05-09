@@ -10,14 +10,13 @@ class Road {
   PShape l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16;
 
   Road(int x, int y, int retning, boolean roadtile) {
+    indexX = x;
+    indexY = y;
     this.x = round(x*Scale);
     this.y = round(y*Scale);
     this.retning = retning;
     this.roadtile = roadtile;
     this.collision = false;
-
-    indexX = x/Scale;
-    indexY = y/Scale;
   }
 
   void display() {

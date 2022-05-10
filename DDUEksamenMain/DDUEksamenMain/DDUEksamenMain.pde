@@ -159,7 +159,8 @@ void mouseClicked() {
 }
 
 void displayCursorImage() {
-  if (tools == 1) {
+  switch (tools) {
+  case 1:
     switch(rot1) {
     case 1: 
       rImage = loadImage("UpRight.PNG");
@@ -174,6 +175,7 @@ void displayCursorImage() {
       rImage = loadImage("DownRight.PNG");
       break;
     }
-  } else if (tools == 2) {
+    break;
+  case 2:
   }
 }

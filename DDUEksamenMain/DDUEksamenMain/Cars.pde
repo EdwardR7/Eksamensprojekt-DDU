@@ -27,6 +27,8 @@ class cars {
     stroke(1);
     rectMode(CENTER);
     rect(0, 0, Scale, Scale/2);
+    fill(#89CFF0);
+    rect(Scale/3, 0, Scale/4, Scale/2-Scale/8);
     rectMode(CORNER);
     popMatrix();
   }

@@ -39,6 +39,7 @@ protected PSurface initSurface() {
   final Scene oldScene = canvas.getScene();
   final Stage stage = (Stage) oldScene.getWindow();
   surface.setTitle("Eksamensprojekt DDU");
+  surface.setResizable(false);
 
 
   try {

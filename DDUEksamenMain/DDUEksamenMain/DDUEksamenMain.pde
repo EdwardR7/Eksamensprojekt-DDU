@@ -30,10 +30,6 @@ boolean Check = false;
 
 PImage rImage;
 
-//Vejlinjer
-
-int queueCounter;
-
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
   final Canvas canvas = (Canvas) surface.getNative();
@@ -241,7 +237,6 @@ void draw() {
   }
   fill(1);
   text(frameRate, 20, 20);
-  text("KøScore: " + queueCounter + " (Lavere = bedre)", 20, 40);
 
   try {
     if (tools == 1) {

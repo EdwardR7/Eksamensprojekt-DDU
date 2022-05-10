@@ -109,7 +109,7 @@ class cars {
   PVector retning(boolean border, Road road, PVector destination) {
     if (border && road.roadtile) {
       if (!road.collision) {
-        velocity = calcVel(destination, Scale, topspeed); 
+        velocity = calcVel(destination, Scale/2, topspeed/2); 
         return velocity;
       }
     }

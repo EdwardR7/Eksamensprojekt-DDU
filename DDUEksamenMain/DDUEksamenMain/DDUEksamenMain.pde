@@ -30,6 +30,8 @@ boolean Check = false;
 
 PImage rImage;
 
+Scene scene;
+Stage stage;
 
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
@@ -38,13 +40,17 @@ protected PSurface initSurface() {
   final Stage stage = (Stage) oldScene.getWindow();
   surface.setTitle("Eksamensprojekt DDU");
 
-   try {
-    
-    Platform.runLater(new Runnable() {
 
+  try {
+    Platform.runLater(new Runnable() {
       @Override
         public void run() {
-        stage.setScene(simulationWindow(stage, canvas));
+        try {
+          stage.setScene(menuController(stage, canvas));
+        }
+        catch(Exception e) {
+          println(e);
+        }
       }
     }
     );
@@ -57,7 +63,7 @@ protected PSurface initSurface() {
 }
 
 void setup() {
-  size(800, 800, FX2D); // FX2D bruger funktionen  initSurface()
+  size(960, 560, FX2D); // FX2D bruger funktionen  initSurface()
   frameRate(60);
 
   rows = round(width/Scale);
@@ -75,7 +81,7 @@ void setup() {
 }
 
 void draw() {
-  background(50,205,50);
+  background(50, 205, 50);
   drawGrid();
 
   for (int r = 0; r < rows; r++) {
@@ -98,11 +104,10 @@ void draw() {
   }
   catch(Exception e) {
   }
-  
 }
 
 void drawGrid() {
-  stroke(34,139,34);
+  stroke(34, 139, 34);
   // Begin loop for columns
   for (int i = 0; i < height; i+=Scale) {
     line(0, i, width, i);

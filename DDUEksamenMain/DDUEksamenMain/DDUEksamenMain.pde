@@ -13,6 +13,12 @@ import javafx.stage.Stage;
 import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 
+import de.bezier.data.sql.*;
+import java.security.*;
+
+//Database
+SQLite db;
+
 int Scale = 16; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
@@ -25,6 +31,8 @@ int rot1;
 int rot2;
 int rot3;
 int tools;
+
+String message;
 
 boolean Check = false;
 
@@ -66,6 +74,7 @@ protected PSurface initSurface() {
 void setup() {
   size(960, 560, FX2D); // FX2D bruger funktionen  initSurface()
   frameRate(60);
+  db = new SQLite( this, "TrafikDB.db" );
 
   rows = round(width/Scale);
   columns = round(height/Scale);

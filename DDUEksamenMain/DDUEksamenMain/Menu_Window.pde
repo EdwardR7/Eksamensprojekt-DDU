@@ -7,7 +7,7 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
 
     final Button StartSim = (Button) namespace.get("StartSimulation"); // get element by fx:id  //insert corners
     final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners
-
+    final Button regAcc = (Button) namespace.get("regAcc"); // get element by fx:id  //insert corners
 
     StartSim.setOnAction(new EventHandler<ActionEvent>() { 
       @Override
@@ -29,6 +29,19 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
           exit();
         }
         catch(Exception e) {
+        }
+      }
+    }
+    );
+    
+    regAcc.setOnAction(new EventHandler<ActionEvent>() { 
+      @Override
+        public void handle(ActionEvent event) {
+        try {
+         stage.setScene(registerController(stage, canvas));
+        }
+        catch(Exception e) {
+          println(e);
         }
       }
     }

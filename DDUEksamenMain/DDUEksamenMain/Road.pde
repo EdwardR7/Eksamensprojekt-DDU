@@ -5,6 +5,9 @@ class Road {
   int retning;
   boolean roadtile;
   boolean collision;
+  boolean lyskryds;
+  color farve;
+  int timer;
 
   //Vejlinjer
   PShape l1, l2, l3, l4, l5, l6, l7, l8, l9, l10, l11, l12, l13, l14, l15, l16;
@@ -17,15 +20,33 @@ class Road {
     this.retning = retning;
     this.roadtile = roadtile;
     this.collision = false;
+    farve = color(100, 100, 100);
+    timer = 0;
   }
 
   void display() {
     if (roadtile) {
-      fill(100, 100, 100);
+      fill(farve);
       stroke(75);
       rect(x, y, Scale, Scale);
       if (Check) {
         roadDirections();
+      }
+      if (retning == 9) {
+        
+        if (timer >= 5*frameRate) {
+          farve = color(0, 255, 0);
+          lyskryds = true;
+          timer+=1;
+          if (timer >= 10*frameRate){
+            timer = 0;
+          }
+        } else {
+          lyskryds = false;
+          farve = color(255,0,0);
+          timer+=1;
+
+        }
       }
     }
   }

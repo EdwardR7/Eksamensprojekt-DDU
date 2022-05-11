@@ -39,8 +39,12 @@ class cars {
       indexY = floor(location.y/Scale);
 
       vejFelt[indexX][indexY].collision = true;
-
+      
+      if(vejFelt[indexX][indexY].retning ==9){
+        
+      } else{
       execute(vejFelt[indexX][indexY].retning); // faktisk kode
+      }
     } 
     catch(Exception e) {
     }
@@ -140,6 +144,7 @@ class cars {
     return velocity;
   }
 }
+
 float getAngle(float pX1, float pY1, float pX2, float pY2) {
   return atan2(pY2 - pY1, pX2 - pX1)* 180/ PI;
 }

@@ -19,7 +19,7 @@ import java.security.*;
 //Database
 SQLite db;
 
-int Scale = 16; // size of each cell
+int Scale =16; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -129,6 +129,7 @@ void drawGrid() {
 }
 
 void mouseClicked() {
+  vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, true);
   switch(tools) { //Corner roadpiece
   case 1:
     try {

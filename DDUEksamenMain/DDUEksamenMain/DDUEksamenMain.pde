@@ -19,7 +19,7 @@ import java.security.*;
 //Database
 SQLite db;
 
-int Scale =16; // size of each cell
+int Scale = 16; // size of each cell
 int rows; // rows of board
 int columns; // colums of board
 
@@ -48,7 +48,6 @@ protected PSurface initSurface() {
   final Stage stage = (Stage) oldScene.getWindow();
   surface.setTitle("Eksamensprojekt DDU");
   surface.setResizable(false);
-
 
   try {
     Platform.runLater(new Runnable() {
@@ -129,42 +128,28 @@ void drawGrid() {
 }
 
 void mouseClicked() {
-  vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, true);
-  switch(tools) { //Corner roadpiece
-  case 1:
-    try {
-      RoadPieces roadPiece = new RoadPieces();
+  try {
+    RoadPieces roadPiece = new RoadPieces();
+    switch(tools) { //Corner roadpiece
+    case 1:
       roadPiece.Corners();
-    }
-    catch( Exception e) {
-    }
-    break;
-  case 2: //Insert car
-    try {
+      break;
+    case 2: //Insert car
+      
       car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
-    }
-    catch( Exception e) {
-    }
-    break;
-
-  case 3://doubleRoadpiece
-    try {
-      RoadPieces roadPiece = new RoadPieces();
+      break;
+    case 3://doubleRoadpiece
       roadPiece.doubleRoad();
-    }
-    catch( Exception e) {
-    }
-    break;
-
-  case 4://singleRoadpiece
-    try {
-      RoadPieces roadPiece = new RoadPieces();
+      break;
+    case 4://singleRoadpiece
       roadPiece.singleRoad();
+      break;
+      case 5://singleRoadpiece
+      vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 2, true, true, 0);
+      break;
     }
-    catch( Exception e) {
-    }
-
-    break;
+  }
+  catch( Exception e) {
   }
 }
 

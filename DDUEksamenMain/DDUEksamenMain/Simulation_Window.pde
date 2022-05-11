@@ -27,8 +27,10 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
       try {
         if (c1.isSelected()) {
           Check = true;
+          tools = 5;
         } else {
           Check = false;
+          tools = 0;
         }
       }
       catch(Exception e) {

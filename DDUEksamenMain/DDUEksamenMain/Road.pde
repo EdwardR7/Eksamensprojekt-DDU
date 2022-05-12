@@ -23,6 +23,17 @@ class Road {
     farve = color(100, 100, 100);
     timer = 0;
   }
+  Road(int x, int y, int retning, boolean roadtile, boolean lyskryds, int timer) {
+    indexX = x;
+    indexY = y;
+    this.x = round(x*Scale);
+    this.y = round(y*Scale);
+    this.retning = retning;
+    this.roadtile = roadtile;
+    this.collision = false;
+    this.timer = timer;
+    this.lyskryds = lyskryds;
+  }
 
   void display() {
     if (roadtile) {
@@ -32,20 +43,18 @@ class Road {
       if (Check) {
         roadDirections();
       }
-      if (retning == 9) {
-        
-        if (timer >= 5*frameRate) {
+      
+      if (lyskryds) {
+        if (timer > 5*frameRate) {
           farve = color(0, 255, 0);
           lyskryds = true;
           timer+=1;
-          if (timer >= 10*frameRate){
+          if (timer > 10*frameRate) {
             timer = 0;
           }
         } else {
-          lyskryds = false;
-          farve = color(255,0,0);
+          farve = color(255, 0, 0);
           timer+=1;
-
         }
       }
     }
@@ -96,7 +105,10 @@ class Road {
       shape(l15);
       shape(l16);
       break;
+     default:
+     break;
     }
+    
   }
   void vejLinjer() {
     //Alle Vejlinjer

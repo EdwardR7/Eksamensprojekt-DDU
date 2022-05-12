@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
    <children>
       <Text layoutX="368.0" layoutY="244.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register acc" textAlignment="CENTER">
          <font>
@@ -19,6 +19,6 @@
       <TextField fx:id="regPass2" layoutX="390.0" layoutY="449.0" prefHeight="32.0" prefWidth="220.0" promptText="Confirm password" />
       <TextField fx:id="regPass1" layoutX="390.0" layoutY="396.0" prefHeight="32.0" prefWidth="220.0" promptText="Password" />
       <TextField fx:id="regUser" layoutX="390.0" layoutY="344.0" prefHeight="32.0" prefWidth="220.0" promptText="Username" />
-      <Label fx:id="Message" layoutX="633.0" layoutY="376.0" prefHeight="73.0" prefWidth="188.0" />
+      <Label fx:id="Message" layoutX="633.0" layoutY="376.0" prefHeight="73.0" prefWidth="188.0" textFill="#d70f0f" />
    </children>
 </AnchorPane>

@@ -24,23 +24,23 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
         println(regPasswordConfirm.getText());
 
         if (regUsername.getText().length() < 1  && regPassword.getText().length() < 1 && regPasswordConfirm.getText().length() < 1) {
-          message = "No username or password inserted";
+          message = "Intet brugernavn eller kodeord indskrevet";
              
         } else {
 
           if (db.connect()) {
             db.query("SELECT Username FROM Users WHERE Username='" + regUsername.getText() + "'");
             if (db.next()) {
-              message = "Username already exists";
+              message = "Brugernavn findes allerede";
             } else {
 
               if (regUsername.getText().length() >= 1  && regPassword.getText().length() >= 1 && regPasswordConfirm.getText().length() >= 1 && regPassword.getText().equals(regPasswordConfirm.getText())) {            
                 if (db.connect()) {
                   db.query("INSERT INTO Users(Username, Password) VALUES ('" + regUsername.getText() + "', '" + regPassword.getText() + "'); ");
-                  message = "Account registered";
+                  message = "Brugeren blev registreret";
                 }
               } else {
-                message = "Passwords are not identical";
+                message = "Kodeordene stemmer ikke overens";
               }
               
               

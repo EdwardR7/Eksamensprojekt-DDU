@@ -60,7 +60,7 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
 
 
         if (Username.getText().length() < 1  && Password.getText().length() < 1) {
-          message = "No username or password inserted";
+          message = "Intet brugernavn eller kodeord indskrevet";
         } else {
 
           if (db.connect()) {
@@ -69,9 +69,9 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
             if (db.next()) {
               println("Working login");
               println(db.getInt("ID"));
-              message = "Login successful";
+              message = "Log ind success";
             } else {
-              message = "User doesn't exist";
+              message = "Brugeren findes ikke";
             }
           }
         }

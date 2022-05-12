@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
    <children>
-      <AnchorPane layoutY="-8.0" prefHeight="733.0" prefWidth="417.0" style="-fx-background-color: #0598ff;">
+      <AnchorPane layoutY="-8.0" prefHeight="859.0" prefWidth="417.0" style="-fx-background-color: #0598ff;">
          <children>
             <Text fill="WHITE" layoutX="138.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingen bruger?">
                <font>

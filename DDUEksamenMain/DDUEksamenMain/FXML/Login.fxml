@@ -60,6 +60,5 @@
       </ImageView>
       <Label layoutX="474.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" text="Logged in as:" />
       <Label fx:id="logName" layoutX="558.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" />
-      <Button fx:id="menu" layoutX="593.0" layoutY="556.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Go to Menu" />
    </children>
 </AnchorPane>

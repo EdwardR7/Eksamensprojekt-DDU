@@ -9,7 +9,7 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
   final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners
   final Button regAcc = (Button) namespace.get("regAcc"); // get element by fx:id  //insert corners
   final Button Login = (Button) namespace.get("Login"); // get element by fx:id  //insert corners
-  final Button toMenu = (Button) namespace.get("menu"); // get element by fx:id  //insert corners
+
 
 
   final TextField Username = (TextField) namespace.get("Username"); // get element by fx:id  //insert corners
@@ -52,19 +52,7 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
   }
   );
 
-  toMenu.setOnAction(new EventHandler<ActionEvent>() { 
-    @Override
-      public void handle(ActionEvent event) {
-      try {
-        mapContents.clear();
-        stage.setScene(menuController(stage, canvas));
-      }
-      catch(Exception e) {
-        println(e);
-      }
-    }
-  }
-  );
+
 
 
   Login.setOnAction(new EventHandler<ActionEvent>() { 
@@ -74,7 +62,14 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
         if (Username.getText().length() < 1  && Password.getText().length() < 1) {
           message = "Intet brugernavn eller kodeord indskrevet";
         } else {
+
+          
           DB.LogVerify(Username.getText(), Password.getText());
+          
+          if(Logged == true){
+          mapContents.clear();
+          stage.setScene(menuController(stage, canvas));
+          }
         }
 
         confMessage.setText(message);

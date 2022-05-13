@@ -57,6 +57,9 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
     @Override
       public void handle(ActionEvent event) {
       try {
+        Logged = false;
+        userID = 0;
+        logName = null;
         stage.setScene(loginController(stage, canvas));
       }
       catch(Exception e) {

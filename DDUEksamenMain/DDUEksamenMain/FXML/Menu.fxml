@@ -6,20 +6,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
    <children>
-      <Button fx:id="StartSimulation" layoutX="647.0" layoutY="158.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="244.0" text="Create new map">
+      <AnchorPane layoutY="-3.0" prefHeight="726.0" prefWidth="439.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <ListView fx:id="mapView" layoutX="120.0" layoutY="98.0" prefHeight="531.0" prefWidth="200.0" />
+            <Label layoutX="176.0" layoutY="52.0" prefHeight="33.0" prefWidth="101.0" text="Dine baner:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Button fx:id="StartSimulation" layoutX="724.0" layoutY="90.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="244.0" text="Opret ny bane">
          <font>
             <Font size="16.0" />
          </font>
       </Button>
-      <Button fx:id="Exit" layoutX="699.0" layoutY="657.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Exit" />
-      <Button fx:id="Tilbage" layoutX="390.0" layoutY="657.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Tilbage" />
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" text="Logged in as:" />
-      <Label fx:id="logName" layoutX="94.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" />
-      <ListView fx:id="mapView" layoutX="54.0" layoutY="158.0" prefHeight="531.0" prefWidth="200.0" />
-      <Label layoutX="54.0" layoutY="113.0" prefHeight="33.0" prefWidth="200.0" text="Your Maps" />
-      <Button fx:id="loadSelected" layoutX="390.0" layoutY="158.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="220.0" text="Load selected map">
+      <Button fx:id="Exit" layoutX="1000.0" layoutY="575.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Afslut" />
+      <Button fx:id="Tilbage" layoutX="867.0" layoutY="652.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="101.0" text="Gå tilbage" />
+      <Label layoutX="570.0" layoutY="46.0" prefHeight="33.0" prefWidth="137.0" text="Logget ind som:">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label fx:id="logName" layoutX="707.0" layoutY="46.0" prefHeight="33.0" prefWidth="171.0">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Button fx:id="loadSelected" layoutX="467.0" layoutY="90.0" mnemonicParsing="false" prefHeight="132.0" prefWidth="220.0" text="Indlæs valgte bane">
          <font>
             <Font size="16.0" />
          </font>

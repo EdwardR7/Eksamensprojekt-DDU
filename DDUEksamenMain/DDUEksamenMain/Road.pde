@@ -20,7 +20,6 @@ class Road {
     this.retning = retning;
     this.roadtile = roadtile;
     this.collision = false;
-    farve = color(100, 100, 100);
     timer = 0;
   }
   Road(int x, int y, int retning, boolean roadtile, boolean lyskryds, int timer) {
@@ -37,7 +36,7 @@ class Road {
 
   void display() {
     if (roadtile) {
-      fill(farve);
+      fill(100);
       stroke(75);
       rect(x, y, Scale, Scale);
       if (Check) {
@@ -47,7 +46,6 @@ class Road {
       if (lyskryds) {
         if (timer > 5*frameRate) {
           farve = color(0, 255, 0);
-          lyskryds = true;
           timer+=1;
           if (timer > 10*frameRate) {
             timer = 0;
@@ -56,6 +54,11 @@ class Road {
           farve = color(255, 0, 0);
           timer+=1;
         }
+        fill(farve);
+        stroke(1);
+        rectMode(CENTER);
+        rect(x+Scale/2, y+Scale/2, Scale/2, Scale/2);
+        rectMode(CORNER);
       }
     }
   }

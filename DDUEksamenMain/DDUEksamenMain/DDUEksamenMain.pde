@@ -15,7 +15,6 @@ import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
 import javafx.collections.*;
 import java.lang.Object.*;
-
 import de.bezier.data.sql.*;
 import java.security.*;
 
@@ -100,7 +99,7 @@ void setup() {
 
   for (int r = 0; r < rows; r++) {
     for (int R = 0; R < columns; R++) {
-      vejFelt[r][R] = new Road(r, R, 0, false);
+      vejFelt[r][R] = new Road(r, R, 9, false);
     }
   }
 }
@@ -151,8 +150,9 @@ void mouseClicked() {
       roadPiece.Corners();
       break;
     case 2: //Insert car
-
-      car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+      if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
+        car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+      }
       break;
     case 3://doubleRoadpiece
       roadPiece.doubleRoad();
@@ -161,7 +161,7 @@ void mouseClicked() {
       roadPiece.singleRoad();
       break;
     case 5://singleRoadpiece
-      vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 2, true, true, 0);
+      roadPiece.traficlights();
       break;
     }
   }

@@ -1,4 +1,4 @@
-import de.bezier.data.sql.*;
+
 
 
 class DBMetoder {
@@ -71,10 +71,14 @@ class DBMetoder {
           for (int r = 0; r < rows; r++) {
             for (int R = 0; R < columns; R++) {
               if (vejFelt[r][R].roadtile) {
-                db.query("INSERT INTO MapDATA(Map_ID, x, y, retning) VALUES ('" + mapID + "', '" + round(vejFelt[r][R].x)/Scale + "', '" + round(vejFelt[r][R].y)/Scale + "', '" + vejFelt[r][R].retning + "'); ");
-                println(round(vejFelt[r][R].x));
-                println(round(vejFelt[r][R].y));
-                println(vejFelt[r][R].retning);
+                int lyskryds = 0;
+                if (vejFelt[r][R].lyskryds) {
+                  lyskryds = 1;
+                } else {
+                  lyskryds = 0;
+                }
+
+                db.query("INSERT INTO MapDATA(Map_ID, x, y, retning, lyskryds, timer) VALUES ('" + mapID + "', '" + round(vejFelt[r][R].x)/Scale + "', '" + round(vejFelt[r][R].y)/Scale + "', '" + vejFelt[r][R].retning + "', '" + lyskryds + "', '" + vejFelt[r][R].timer + "'); ");
               }
             }
           }
@@ -82,11 +86,6 @@ class DBMetoder {
 
         catch(Exception e) {
         }
-
-        //   ResultSet rs = stat.executeQuery("INSERT INTO Maps(Name) VALUES ('" + "test" + "') WHERE (Users INNER JOIN Maps ON Maps.ID_User = User.id) AND WHERE User.Name='" + CurrentUser + "'");    
-        //   ResultSet rs = stat.executeQuery("SELECT Elev.NAVN, Elev.ID FROM (((Lærer INNER JOIN Quiz ON Quiz.Lærer_ID = Lærer.ID) INNER JOIN ELEV_SVAR ON Quiz.ID=Elev_Svar.ID_Quiz) INNER JOIN Elev ON Elev_Svar.ID_Elev = Elev.ID) Where Lærer.ID = '" + CurrentUser + "'");
-
-        //}
       }
     }
   }
@@ -94,10 +93,16 @@ class DBMetoder {
   void loadMap() {
 
     if (db.connect()) {
-      db.query("SELECT MapDATA.x, MapDATA.y, MapDATA.retning FROM ((Users INNER JOIN Maps ON Maps.User_ID = Users.ID_User) INNER JOIN MapDATA ON Maps.ID_Map = MapDATA.Map_ID) WHERE Maps.User_ID='" + userID + "' AND Maps.Name='" + savedMap + "'");
+      db.query("SELECT MapDATA.x, MapDATA.y, MapDATA.retning, MapDATA.lyskryds, MapDATA.timer FROM ((Users INNER JOIN Maps ON Maps.User_ID = Users.ID_User) INNER JOIN MapDATA ON Maps.ID_Map = MapDATA.Map_ID) WHERE Maps.User_ID='" + userID + "' AND Maps.Name='" + savedMap + "'");
       while (db.next()) {
-        vejFelt[db.getInt("x")][db.getInt("y")] = new Road(db.getInt("x"), db.getInt("y"), db.getInt("retning"), true);
-        // println(db.getInt("ID_Map")); //User identifcation, which user is currently logged in
+        boolean lyskryds = false;
+        if (db.getInt("lyskryds") == 1) {
+          lyskryds = true;
+        } else {
+          lyskryds = false;
+        }
+
+        vejFelt[db.getInt("x")][db.getInt("y")] = new Road(db.getInt("x"), db.getInt("y"), db.getInt("retning"), true, lyskryds, db.getInt("timer"));
       }
     }
   }
@@ -113,7 +118,7 @@ class DBMetoder {
   void ClearMethod() {
     for (int r = 0; r < rows; r++) {
       for (int R = 0; R < columns; R++) {
-        vejFelt[r][R] = new Road(r, R, 0, false);
+        vejFelt[r][R] = new Road(r, R, 0, false, false, 0);
       }
     }
   }

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
+   <children>
+      <AnchorPane layoutY="-8.0" prefHeight="859.0" prefWidth="417.0" style="-fx-background-color: #0598ff;">
+         <children>
+            <Text fill="WHITE" layoutX="138.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingen bruger?">
+               <font>
+                  <Font name="Avenir Book" size="25.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="106.0" fitWidth="110.0" layoutX="162.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../MiniEksamensprojekt/Kashoot/src/main/resources/org/openjfx/kashoot/Icons/users-icon.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="regAcc" layoutX="130.0" layoutY="333.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="168.0" text="Opret bruger" />
+         </children>
+      </AnchorPane>
+      <Text layoutX="474.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DDU Eksamensprojekt" textAlignment="CENTER">
+         <font>
+            <Font size="50.0" />
+         </font>
+      </Text>
+      <Text layoutX="618.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Trafiksimulation" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text layoutX="585.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fremstillet af Nicklas, Edward, Victor &amp; Peter" />
+      <Button fx:id="Exit" layoutX="592.0" layoutY="630.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Exit" />
+      <Button fx:id="Login" layoutX="646.0" layoutY="407.0" mnemonicParsing="false" prefHeight="16.0" prefWidth="112.0" text="Log ind" />
+      <Label fx:id="Message" layoutX="585.0" layoutY="432.0" prefHeight="67.0" prefWidth="235.0" textAlignment="CENTER" textFill="#da0f0f" />
+      <Text layoutX="663.0" layoutY="302.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log ind" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <TextField fx:id="Username" layoutX="628.0" layoutY="323.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <PasswordField fx:id="Password" layoutX="628.0" layoutY="365.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: #0598ff #0598ff; -fx-border-width: 0px 0px 2px 0px;" />
+      <ImageView fitHeight="28.0" fitWidth="30.0" layoutX="598.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../MiniEksamensprojekt/Kashoot/src/main/resources/org/openjfx/kashoot/Icons/User.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="27.0" fitWidth="20.0" layoutX="602.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../MiniEksamensprojekt/Kashoot/src/main/resources/org/openjfx/kashoot/Icons/LoginKey.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="474.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" text="Logged in as:" />
+      <Label fx:id="logName" layoutX="558.0" layoutY="14.0" prefHeight="33.0" prefWidth="80.0" />
+      <Button fx:id="menu" layoutX="593.0" layoutY="556.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Go to Menu" />
+   </children>
+</AnchorPane>

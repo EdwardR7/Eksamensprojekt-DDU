@@ -32,14 +32,21 @@ int rot2;
 int rot3;
 int tools;
 
+int userID;
+
 String message;
+String logName;
 
 boolean Check = false;
+boolean Logged = false;
 
 PImage rImage;
 
 Scene scene;
 Stage stage;
+
+DBMetoder DB = new DBMetoder(); //DBMetoder object til at kalde constructors fra databasemetoder
+
 
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
@@ -54,7 +61,7 @@ protected PSurface initSurface() {
       @Override
         public void run() {
         try {
-          stage.setScene(menuController(stage, canvas));
+          stage.setScene(loginController(stage, canvas));
         }
         catch(Exception e) {
           println(e);

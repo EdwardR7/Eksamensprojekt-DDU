@@ -1,5 +1,5 @@
-Scene menuController(final Stage stage, final Canvas canvas) throws IOException {
-  FXMLLoader loader = new FXMLLoader(Paths.get(sketchPath(), "FXML", "Menu.fxml").toUri().toURL()); // abs path to fxml file
+Scene loginController(final Stage stage, final Canvas canvas) throws IOException {
+  FXMLLoader loader = new FXMLLoader(Paths.get(sketchPath(), "FXML", "Login.fxml").toUri().toURL()); // abs path to fxml file
 
   final Parent sceneFromFXML = loader.load();
   final Map<String, Object> namespace = loader.getNamespace();
@@ -14,6 +14,8 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
   final TextField Password = (TextField) namespace.get("Password"); // get element by fx:id  //insert corners
 
   final Label confMessage = (Label) namespace.get("Message"); // get element by fx:id  //insert corners
+  final Label loggedName = (Label) namespace.get("logName"); // get element by fx:id  //insert corners
+
 
   StartSim.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
@@ -57,27 +59,14 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
     @Override
       public void handle(ActionEvent event) {
       try {
-
-
         if (Username.getText().length() < 1  && Password.getText().length() < 1) {
           message = "Intet brugernavn eller kodeord indskrevet";
         } else {
-
-          if (db.connect()) {
-            db.query("SELECT ID FROM Users WHERE Username='" + Username.getText() + "' AND Password='" + Password.getText() + "'");
-
-            if (db.next()) {
-              println("Working login");
-              println(db.getInt("ID"));
-              message = "Log ind success";
-            } else {
-              message = "Brugeren findes ikke";
-            }
-          }
+          DB.LogVerify(Username.getText(), Password.getText());
         }
 
-
         confMessage.setText(message);
+        loggedName.setText(logName);
       }
       catch(Exception e) {
         println(e);

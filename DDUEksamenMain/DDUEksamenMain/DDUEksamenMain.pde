@@ -1,5 +1,6 @@
 import java.util.Map;
 import java.nio.file.Paths;
+import javafx.scene.input.MouseEvent;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.application.Platform;
@@ -12,6 +13,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.scene.control.*;
 import processing.javafx.PSurfaceFX;
+import javafx.collections.*;
+import java.lang.Object.*;
 
 import de.bezier.data.sql.*;
 import java.security.*;
@@ -36,9 +39,15 @@ int userID;
 
 String message;
 String logName;
+String savedMap;
 
 boolean Check = false;
 boolean Logged = false;
+
+
+
+ArrayList<String> mapContents = new ArrayList<String>();
+
 
 PImage rImage;
 
@@ -142,7 +151,7 @@ void mouseClicked() {
       roadPiece.Corners();
       break;
     case 2: //Insert car
-      
+
       car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
       break;
     case 3://doubleRoadpiece
@@ -151,7 +160,7 @@ void mouseClicked() {
     case 4://singleRoadpiece
       roadPiece.singleRoad();
       break;
-      case 5://singleRoadpiece
+    case 5://singleRoadpiece
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 2, true, true, 0);
       break;
     }

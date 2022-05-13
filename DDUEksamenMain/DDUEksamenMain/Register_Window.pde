@@ -12,6 +12,9 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
   final TextField regPassword = (TextField) namespace.get("regPass1"); // get element by fx:id  //insert corners
   final TextField regPasswordConfirm = (TextField) namespace.get("regPass2"); // get element by fx:id  //insert corners
   final Label confMessage = (Label) namespace.get("Message"); // get element by fx:id  //insert corners
+  
+
+
 
 
   register.setOnAction(new EventHandler<ActionEvent>() { 

@@ -18,8 +18,12 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   final Button b9 = (Button) namespace.get("butt9"); // get element by fx:id  //insert SingleRoad ROTATE LEFT
   final Button b10 = (Button) namespace.get("butt10"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
 
+  final Button b11 = (Button) namespace.get("butt11"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
+
+
   final CheckBox c1 = (CheckBox) namespace.get("check1");
 
+  final TextField mapName = (TextField) namespace.get("MapName"); // get element by fx:id  //insert corners
 
   c1.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
@@ -143,6 +147,15 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
     }
   }
   );
+  b11.setOnAction(new EventHandler<ActionEvent>() { //SAVE MAP
+    @Override
+      public void handle(ActionEvent event) {
+      DB.saveMap(mapName.getText());
+    }
+  }
+  );
+
+
 
   final AnchorPane pane = (AnchorPane) namespace.get("anchorPane"); // get element by fx:id  
   pane.getChildren().add(canvas); // processing to stackPane

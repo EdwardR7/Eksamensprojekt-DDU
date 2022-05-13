@@ -22,20 +22,14 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
       public void handle(ActionEvent event) {
       try {
 
-        //if(regPassword.getText() == regPasswordConfirm.getText()){ 
-        println(regPassword.getText());
-        println(regPasswordConfirm.getText());
-
         if (regUsername.getText().length() < 1  && regPassword.getText().length() < 1 && regPasswordConfirm.getText().length() < 1) {
           message = "Intet brugernavn eller kodeord indskrevet";
         } else {
 
           DB.RegisterAccount(regUsername.getText(), regPassword.getText(), regPasswordConfirm.getText());
-          
+          stage.setScene(loginController(stage, canvas));
         }
-
         confMessage.setText(message);
-
       }
       catch(Exception e) {
         println(e);

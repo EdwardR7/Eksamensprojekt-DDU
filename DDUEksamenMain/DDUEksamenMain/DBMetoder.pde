@@ -3,12 +3,11 @@ class DBMetoder {
 
   void LogVerify(String User, String Pass) {
     if (db.connect()) {
-      db.query("SELECT ID_User FROM Users WHERE Username='" + User + "' AND Password='" + Pass + "'");
+      db.query("SELECT ID_User FROM Users WHERE Username='" + User + "' AND Password='" + hashKode(Pass) + "'");
       if (db.next()) {
         println("Working login");
         println(db.getInt("ID_User")); //User identifcation, which user is currently logged in
         userID = db.getInt("ID_User");
-
 
         message = "Log ind success";
         Logged = true;
@@ -29,7 +28,7 @@ class DBMetoder {
 
         if (User.length() >= 1  && Pass1.length() >= 1 && Pass2.length() >= 1 && Pass1.equals(Pass2)) {            
           if (db.connect()) {
-            db.query("INSERT INTO Users(Username, Password) VALUES ('" + User + "', '" + Pass1 + "'); ");
+            db.query("INSERT INTO Users(Username, Password) VALUES ('" + User + "', '" + hashKode(Pass1) + "'); ");
             message = "Brugeren blev registreret";
           }
         } else {
@@ -119,4 +118,30 @@ class DBMetoder {
       }
     }
   }
+  
+  String hashKode(String inputTekst){
+    try {
+    //Vha. MessageDigest kan vi anvende en hashing algoritme.... her SHA-256 ...
+    //prøv f.eks. MD5 og se om du kan bryde den ved at søge på nettet!
+    MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+
+    //MassageDigest objektet "fodres" med teksten, der skal "hashes"
+    md.update(inputTekst.getBytes());    
+
+    //digest funktionen giver "hash-værdien", men i hexadecimale bytes 
+    byte[] byteList = md.digest();
+
+    //Her anvendes processings hex funktion, der kan konvertere hexadecimale bytes til Strings
+    //så det er muligt at læse "hash-værdien"
+    StringBuffer hashedValueBuffer = new StringBuffer();
+    for (byte b : byteList)hashedValueBuffer.append(hex(b)); 
+    return hashedValueBuffer.toString();
+  }
+
+  catch (Exception e) {
+    System.out.println("Exception: "+e);
+    return "";
+  }
+  }
+  
 }

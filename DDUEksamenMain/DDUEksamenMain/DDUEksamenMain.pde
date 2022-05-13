@@ -109,6 +109,7 @@ void draw() {
     c.move();
     c.display();
   }
+
   fill(1);
   text(frameRate, 20, 20);
 
@@ -142,8 +143,9 @@ void mouseClicked() {
       roadPiece.Corners();
       break;
     case 2: //Insert car
-      
-      car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+      if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
+        car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+      }
       break;
     case 3://doubleRoadpiece
       roadPiece.doubleRoad();
@@ -151,8 +153,8 @@ void mouseClicked() {
     case 4://singleRoadpiece
       roadPiece.singleRoad();
       break;
-      case 5://singleRoadpiece
-      vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 2, true, true, 0);
+    case 5://singleRoadpiece
+      roadPiece.traficlights();
       break;
     }
   }

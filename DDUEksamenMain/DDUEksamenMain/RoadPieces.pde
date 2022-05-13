@@ -118,4 +118,26 @@ class RoadPieces {
       break;
     }
   }
+  void traficlights() {
+    //række 1
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale), 4, true, true, 0);
+    vejFelt[round(mouseX/Scale)+2][round(mouseY/Scale)] = new Road(round(mouseX/Scale)+2, round(mouseY/Scale), 3, true);
+
+    //række 2
+    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale), round(mouseY/Scale)+1, 1, true);
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+1, 0, true);
+    vejFelt[round(mouseX/Scale)+2][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale)+2, round(mouseY/Scale)+1, 0, true);
+    vejFelt[round(mouseX/Scale)+3][round(mouseY/Scale)+1] = new Road(round(mouseX/Scale)+3, round(mouseY/Scale)+1, 1, true, true, round(5*frameRate));
+
+    //række 3
+    vejFelt[round(mouseX/Scale)][round(mouseY/Scale)+2] = new Road(round(mouseX/Scale), round(mouseY/Scale)+2, 2, true, true, round(5*frameRate));
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)+2] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+2, 0, true);
+    vejFelt[round(mouseX/Scale)+2][round(mouseY/Scale)+2] = new Road(round(mouseX/Scale)+2, round(mouseY/Scale)+2, 0, true);
+    vejFelt[round(mouseX/Scale)+3][round(mouseY/Scale)+2] = new Road(round(mouseX/Scale)+3, round(mouseY/Scale)+2, 2, true);
+    
+    //række 4
+    vejFelt[round(mouseX/Scale)+1][round(mouseY/Scale)+3] = new Road(round(mouseX/Scale)+1, round(mouseY/Scale)+3, 4, true);
+    vejFelt[round(mouseX/Scale)+2][round(mouseY/Scale)+3] = new Road(round(mouseX/Scale)+2, round(mouseY/Scale)+3, 3, true, true, round(0));
+    
+  }
 }

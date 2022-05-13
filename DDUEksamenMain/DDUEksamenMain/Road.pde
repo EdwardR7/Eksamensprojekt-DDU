@@ -37,7 +37,7 @@ class Road {
 
   void display() {
     if (roadtile) {
-      fill(farve);
+      fill(100, 100, 100);
       stroke(75);
       rect(x, y, Scale, Scale);
       if (Check) {
@@ -47,15 +47,18 @@ class Road {
       if (lyskryds) {
         if (timer > 5*frameRate) {
           farve = color(0, 255, 0);
-          lyskryds = true;
           timer+=1;
-          if (timer > 10*frameRate) {
+          if (timer > 20*frameRate) {
             timer = 0;
           }
         } else {
           farve = color(255, 0, 0);
           timer+=1;
         }
+        fill(farve);
+        rectMode(CENTER);
+        rect(x+Scale/2, y+Scale/2, Scale/2, Scale/2);
+        rectMode(CORNER);
       }
     }
   }

@@ -3,7 +3,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
 
   final Parent sceneFromFXML = loader.load();
   final Map<String, Object> namespace = loader.getNamespace();
-  final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
+  final Scene newScene = new Scene(sceneFromFXML, 1000, 720, false, SceneAntialiasing.BALANCED);
 
   final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  //insert corners
   final Button b2 = (Button) namespace.get("butt2"); // get element by fx:id  //insert corners ROTATE LEFT

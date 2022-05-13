@@ -1,8 +1,5 @@
 
-
-
 class DBMetoder {
-
 
   void LogVerify(String User, String Pass) {
     if (db.connect()) {

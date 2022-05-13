@@ -43,10 +43,7 @@ String savedMap;
 boolean Check = false;
 boolean Logged = false;
 
-
-
 ArrayList<String> mapContents = new ArrayList<String>();
-
 
 PImage rImage;
 
@@ -55,14 +52,14 @@ Stage stage;
 
 DBMetoder DB = new DBMetoder(); //DBMetoder object til at kalde constructors fra databasemetoder
 
-
 protected PSurface initSurface() {
   surface = (PSurfaceFX) super.initSurface();
   final Canvas canvas = (Canvas) surface.getNative();
   final Scene oldScene = canvas.getScene();
   final Stage stage = (Stage) oldScene.getWindow();
   surface.setTitle("Eksamensprojekt DDU");
-  surface.setResizable(false);
+
+
 
   try {
     Platform.runLater(new Runnable() {
@@ -123,7 +120,7 @@ void draw() {
   try {
     if (tools == 1) {
       rImage.resize(50, 50);
-      image(rImage, mouseX, mouseY);
+       image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
     }
   }
   catch(Exception e) {

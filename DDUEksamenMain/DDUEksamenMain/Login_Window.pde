@@ -3,7 +3,7 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
 
   final Parent sceneFromFXML = loader.load();
   final Map<String, Object> namespace = loader.getNamespace();
-  final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
+  final Scene newScene = new Scene(sceneFromFXML, 1000, 720, false, SceneAntialiasing.BALANCED);
 
 
   final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners
@@ -23,9 +23,6 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
   }
   catch(Exception e) {
   }
-
-
-
 
   Exit.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
@@ -51,9 +48,6 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
     }
   }
   );
-
-
-
 
   Login.setOnAction(new EventHandler<ActionEvent>() { 
     @Override

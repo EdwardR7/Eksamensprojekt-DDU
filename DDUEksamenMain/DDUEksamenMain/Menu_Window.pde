@@ -5,7 +5,7 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
   final Map<String, Object> namespace = loader.getNamespace();
   final Scene newScene = new Scene(sceneFromFXML, stage.getWidth(), stage.getHeight(), false, SceneAntialiasing.BALANCED);
 
-  final Button StartSim = (Button) namespace.get("StartSimulation"); // get element by fx:id  //insert corners
+  final Button ClearScene = (Button) namespace.get("StartSimulation"); // get element by fx:id  //insert corners
   final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners
   final Button Tilbage = (Button) namespace.get("Tilbage"); // get element by fx:id  //insert corners
   final Button loadSelectedMap = (Button) namespace.get("loadSelected"); // get element by fx:id  //insert corners
@@ -24,13 +24,20 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
   catch(Exception e) {
   }
 
-  StartSim.setOnAction(new EventHandler<ActionEvent>() { 
+  ClearScene.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
       public void handle(ActionEvent event) {
       try {
         stage.setScene(simulationController(stage, canvas));
-      }
-      catch(Exception e) {
+        
+        for (int r = 0; r < rows; r++) {
+    for (int R = 0; R < columns; R++) {
+      vejFelt[r][R] = new Road(r, R, 0, false);
+    }
+  }
+}
+
+        catch(Exception e) {
         println(e);
       }
     }

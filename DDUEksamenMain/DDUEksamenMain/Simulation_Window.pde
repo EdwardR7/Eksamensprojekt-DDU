@@ -163,6 +163,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
     @Override
       public void handle(ActionEvent event) {
       try {
+        mapContents.clear();
         stage.setScene(menuController(stage, canvas));
       }
       catch(Exception e) {

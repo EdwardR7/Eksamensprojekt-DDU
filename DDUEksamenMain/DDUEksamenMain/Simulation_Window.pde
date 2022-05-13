@@ -17,13 +17,13 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   final Button b8 = (Button) namespace.get("butt8"); // get element by fx:id  //insert SingleRoad
   final Button b9 = (Button) namespace.get("butt9"); // get element by fx:id  //insert SingleRoad ROTATE LEFT
   final Button b10 = (Button) namespace.get("butt10"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
-
   final Button b11 = (Button) namespace.get("butt11"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
+  final Button b12 = (Button) namespace.get("butt12"); // get element by fx:id  //insert SingleRoad ROTATE RIGHT
 
-
+  final Label savedMapMessage = (Label) namespace.get("savedMessage"); // get element by fx:id  //insert corners
   final CheckBox c1 = (CheckBox) namespace.get("check1");
-
   final TextField mapName = (TextField) namespace.get("MapName"); // get element by fx:id  //insert corners
+
 
   c1.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
@@ -151,6 +151,23 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
     @Override
       public void handle(ActionEvent event) {
       DB.saveMap(mapName.getText());
+
+
+      message = "Your map has been saved!";
+      savedMapMessage.setText(message);
+    }
+  }
+  );
+
+  b12.setOnAction(new EventHandler<ActionEvent>() { 
+    @Override
+      public void handle(ActionEvent event) {
+      try {
+        stage.setScene(menuController(stage, canvas));
+      }
+      catch(Exception e) {
+        println(e);
+      }
     }
   }
   );

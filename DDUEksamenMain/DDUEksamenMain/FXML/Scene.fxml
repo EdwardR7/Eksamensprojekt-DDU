@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -58,8 +59,14 @@
             <Font size="13.0" />
          </font>
       </Button>
-      <CheckBox fx:id="check1" layoutX="824.0" layoutY="611.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="147.0" text="Toggle Roadlines" />
+      <CheckBox fx:id="check1" layoutX="824.0" layoutY="613.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Toggle Roadlines" />
       <Button fx:id="butt11" layoutX="14.0" layoutY="574.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Save Map" />
-      <TextField fx:id="MapName" layoutX="145.0" layoutY="576.0" promptText="Your Map Name" />
+      <TextField fx:id="MapName" layoutX="145.0" layoutY="576.0" prefHeight="25.0" prefWidth="125.0" promptText="Your Map Name" />
+      <Label fx:id="savedMessage" layoutX="287.0" layoutY="576.0" prefHeight="25.0" prefWidth="369.0" />
+      <Button fx:id="butt12" layoutX="811.0" layoutY="575.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="173.0" text="Return to menu">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

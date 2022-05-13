@@ -12,28 +12,28 @@
    <children>
       <AnchorPane layoutY="-3.0" prefHeight="726.0" prefWidth="439.0" style="-fx-background-color: #0598ff;">
          <children>
-            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="32.0" layoutY="147.0" opacity="0.24" pickOnBounds="true" preserveRatio="true" rotate="14.0">
+            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="32.0" layoutY="147.0" opacity="0.17" pickOnBounds="true" preserveRatio="true" rotate="14.0">
                <image>
                   <Image url="@../data/Design.png" />
                </image>
             </ImageView>
             <ListView fx:id="mapView" layoutX="120.0" layoutY="98.0" prefHeight="531.0" prefWidth="200.0" />
-            <Label layoutX="170.0" layoutY="60.0" prefHeight="33.0" prefWidth="101.0" text="Dine baner">
+            <Label layoutX="168.0" layoutY="58.0" prefHeight="41.0" prefWidth="112.0" text="Dine baner">
                <font>
-                  <Font name="Academy Engraved LET Plain:1.0" size="21.0" />
+                  <Font name="Academy Engraved LET Plain:1.0" size="23.0" />
                </font>
             </Label>
-            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="342.0" layoutY="469.0" opacity="0.24" pickOnBounds="true" preserveRatio="true" rotate="12.5">
+            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="342.0" layoutY="469.0" opacity="0.17" pickOnBounds="true" preserveRatio="true" rotate="12.5">
                <image>
                   <Image url="@../data/Design.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="32.0" layoutY="583.0" opacity="0.26" pickOnBounds="true" preserveRatio="true" rotate="-4.8">
+            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="32.0" layoutY="583.0" opacity="0.17" pickOnBounds="true" preserveRatio="true" rotate="-4.8">
                <image>
                   <Image url="@../data/Design.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="342.0" layoutY="41.0" opacity="0.25" pickOnBounds="true" preserveRatio="true" rotate="-21.8">
+            <ImageView fitHeight="114.0" fitWidth="65.0" layoutX="342.0" layoutY="41.0" opacity="0.17" pickOnBounds="true" preserveRatio="true" rotate="-21.8">
                <image>
                   <Image url="@../data/Design.png" />
                </image>
@@ -51,7 +51,7 @@
          <font>
             <Font name="Devanagari MT" size="18.0" />
          </font></Label>
-      <Label fx:id="logName" layoutX="708.0" layoutY="44.0" prefHeight="33.0" prefWidth="171.0">
+      <Label fx:id="logName" layoutX="708.0" layoutY="42.0" prefHeight="33.0" prefWidth="171.0">
          <font>
             <Font size="18.0" />
          </font></Label>

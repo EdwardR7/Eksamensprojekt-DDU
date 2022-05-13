@@ -7,13 +7,15 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
 
   final Button StartSim = (Button) namespace.get("StartSimulation"); // get element by fx:id  //insert corners
   final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners
-  final Button regAcc = (Button) namespace.get("regAcc"); // get element by fx:id  //insert corners
-  final Button Login = (Button) namespace.get("Login"); // get element by fx:id  //insert corners
+  final Button Tilbage = (Button) namespace.get("Tilbage"); // get element by fx:id  //insert corners
 
-  final TextField Username = (TextField) namespace.get("Username"); // get element by fx:id  //insert corners
-  final TextField Password = (TextField) namespace.get("Password"); // get element by fx:id  //insert corners
 
-  final Label confMessage = (Label) namespace.get("Message"); // get element by fx:id  //insert corners
+  final Label loggedName = (Label) namespace.get("logName"); // get element by fx:id  //insert corners
+  try {
+    loggedName.setText(logName);
+  }
+  catch(Exception e) {
+  }
 
   StartSim.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
@@ -40,51 +42,17 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
   }
   );
 
-  regAcc.setOnAction(new EventHandler<ActionEvent>() { 
+  Tilbage.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
       public void handle(ActionEvent event) {
       try {
-        stage.setScene(registerController(stage, canvas));
+        stage.setScene(loginController(stage, canvas));
       }
       catch(Exception e) {
-        println(e);
       }
     }
   }
   );
-
-  Login.setOnAction(new EventHandler<ActionEvent>() { 
-    @Override
-      public void handle(ActionEvent event) {
-      try {
-
-
-        if (Username.getText().length() < 1  && Password.getText().length() < 1) {
-          message = "Intet brugernavn eller kodeord indskrevet";
-        } else {
-
-          if (db.connect()) {
-            db.query("SELECT ID FROM Users WHERE Username='" + Username.getText() + "' AND Password='" + Password.getText() + "'");
-
-            if (db.next()) {
-              println("Working login");
-              println(db.getInt("ID"));
-              message = "Log ind success";
-            } else {
-              message = "Brugeren findes ikke";
-            }
-          }
-        }
-
-
-        confMessage.setText(message);
-      }
-      catch(Exception e) {
-        println(e);
-      }
-    }
-  }
-  );    
 
 
   return newScene;

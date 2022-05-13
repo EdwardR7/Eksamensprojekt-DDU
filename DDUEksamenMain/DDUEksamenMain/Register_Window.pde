@@ -25,30 +25,14 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
 
         if (regUsername.getText().length() < 1  && regPassword.getText().length() < 1 && regPasswordConfirm.getText().length() < 1) {
           message = "Intet brugernavn eller kodeord indskrevet";
-             
         } else {
 
-          if (db.connect()) {
-            db.query("SELECT Username FROM Users WHERE Username='" + regUsername.getText() + "'");
-            if (db.next()) {
-              message = "Brugernavn findes allerede";
-            } else {
-
-              if (regUsername.getText().length() >= 1  && regPassword.getText().length() >= 1 && regPasswordConfirm.getText().length() >= 1 && regPassword.getText().equals(regPasswordConfirm.getText())) {            
-                if (db.connect()) {
-                  db.query("INSERT INTO Users(Username, Password) VALUES ('" + regUsername.getText() + "', '" + regPassword.getText() + "'); ");
-                  message = "Brugeren blev registreret";
-                }
-              } else {
-                message = "Kodeordene stemmer ikke overens";
-              }
-              
-              
-            }
-          }
+          DB.RegisterAccount(regUsername.getText(), regPassword.getText(), regPasswordConfirm.getText());
+          
         }
 
         confMessage.setText(message);
+
       }
       catch(Exception e) {
         println(e);
@@ -63,7 +47,7 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
     @Override
       public void handle(ActionEvent event) {
       try {
-        stage.setScene(menuController(stage, canvas));
+        stage.setScene(loginController(stage, canvas));
       }
       catch(Exception e) {
         println(e);

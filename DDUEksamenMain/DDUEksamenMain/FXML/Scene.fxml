@@ -7,63 +7,64 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="anchorPane" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="960.0" />
-      <Button fx:id="butt1" layoutX="548.0" layoutY="639.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Insert Corners">
+      <AnchorPane layoutX="-7.0" layoutY="582.0" prefHeight="147.0" prefWidth="1015.0" style="-fx-background-color: #0598ff;" />
+      <AnchorPane id="AnchorPane" fx:id="anchorPane" layoutX="20.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="560.0" prefWidth="960.0" />
+      <Button fx:id="butt1" layoutX="548.0" layoutY="650.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Indsæt hjørne">
          <font>
-            <Font size="27.0" />
+            <Font size="20.0" />
          </font></Button>
-      <Button fx:id="butt2" layoutX="548.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Left">
+      <Button fx:id="butt2" layoutX="548.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Roter venstre">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="butt3" layoutX="672.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Right">
+      <Button fx:id="butt3" layoutX="672.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Roter højre">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="butt4" layoutX="811.0" layoutY="639.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="173.0" text="Insert Cars">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Button>
-      <Button fx:id="butt8" layoutX="282.0" layoutY="639.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Insert Single Road">
+      <Button fx:id="butt4" layoutX="811.0" layoutY="650.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="173.0" text="Indsæt bil">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="butt9" layoutX="282.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Left">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="butt10" layoutX="406.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Right">
-         <font>
-            <Font size="13.0" />
-         </font>
-      </Button>
-      <Button fx:id="butt5" layoutX="14.0" layoutY="639.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Insert Double Road">
+      <Button fx:id="butt8" layoutX="282.0" layoutY="650.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Indsæt single vej">
          <font>
             <Font size="20.0" />
          </font>
       </Button>
-      <Button fx:id="butt6" layoutX="14.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Left">
+      <Button fx:id="butt9" layoutX="282.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Roter venstre">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <Button fx:id="butt7" layoutX="138.0" layoutY="611.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Rotate Right">
+      <Button fx:id="butt10" layoutX="406.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Roter højre">
          <font>
             <Font size="13.0" />
          </font>
       </Button>
-      <CheckBox fx:id="check1" layoutX="824.0" layoutY="613.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Toggle Roadlines" />
-      <Button fx:id="butt11" layoutX="14.0" layoutY="574.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Save Map" />
-      <TextField fx:id="MapName" layoutX="145.0" layoutY="576.0" prefHeight="25.0" prefWidth="125.0" promptText="Your Map Name" />
+      <Button fx:id="butt5" layoutX="14.0" layoutY="650.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="58.0" prefWidth="255.0" text="Indsæt double vej">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt6" layoutX="14.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Roter venstre">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="butt7" layoutX="138.0" layoutY="619.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="131.0" text="Roter højre">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="check1" layoutX="824.0" layoutY="621.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="147.0" text="Vis vejretning" />
+      <Button fx:id="butt11" layoutX="14.0" layoutY="588.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="119.0" text="Gem bane" />
+      <TextField fx:id="MapName" layoutX="145.0" layoutY="589.0" prefHeight="25.0" prefWidth="125.0" promptText="Dit bane navn" />
       <Label fx:id="savedMessage" layoutX="287.0" layoutY="576.0" prefHeight="25.0" prefWidth="369.0" />
-      <Button fx:id="butt12" layoutX="811.0" layoutY="575.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="173.0" text="Return to menu">
+      <Button fx:id="butt12" layoutX="811.0" layoutY="590.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="28.0" prefWidth="173.0" text="Gå tilbage til hovedmenu">
          <font>
             <Font size="13.0" />
          </font>

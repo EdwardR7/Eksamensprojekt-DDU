@@ -109,4 +109,12 @@ class DBMetoder {
       }
     }
   }
+
+  void ClearMethod() {
+    for (int r = 0; r < rows; r++) {
+      for (int R = 0; R < columns; R++) {
+        vejFelt[r][R] = new Road(r, R, 0, false);
+      }
+    }
+  }
 }

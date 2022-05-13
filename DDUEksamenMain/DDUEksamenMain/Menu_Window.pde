@@ -28,16 +28,13 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
     @Override
       public void handle(ActionEvent event) {
       try {
+        car.clear();
+        mapContents.clear();
         stage.setScene(simulationController(stage, canvas));
-        
-        for (int r = 0; r < rows; r++) {
-    for (int R = 0; R < columns; R++) {
-      vejFelt[r][R] = new Road(r, R, 0, false);
-    }
-  }
-}
+        DB.ClearMethod();
+      }
 
-        catch(Exception e) {
+      catch(Exception e) {
         println(e);
       }
     }
@@ -72,9 +69,13 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
     @Override
       public void handle(MouseEvent arg0) {
       //Check wich list index is selected then set txtContent value for that index 
+      try {
+        savedMap = mapList.getSelectionModel().getSelectedItem().toString();
+        System.out.println(savedMap);
+      }
 
-      savedMap = mapList.getSelectionModel().getSelectedItem().toString();
-      System.out.println(savedMap);
+      catch(Exception e) {
+      }
     }
   }
   );
@@ -84,6 +85,8 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
     @Override
       public void handle(ActionEvent event) {
       try {
+        car.clear();
+        DB.ClearMethod();
         stage.setScene(simulationController(stage, canvas));
         DB.loadMap();
       }

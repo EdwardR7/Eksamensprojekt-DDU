@@ -17,7 +17,7 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
 
   final Label confMessage = (Label) namespace.get("Message"); // get element by fx:id  //
   final Label loggedName = (Label) namespace.get("logName"); // get element by fx:id  //
-  
+
   try {
     loggedName.setText(logName);
   }
@@ -56,6 +56,7 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
     @Override
       public void handle(ActionEvent event) {
       try {
+        mapContents.clear();
         stage.setScene(menuController(stage, canvas));
       }
       catch(Exception e) {

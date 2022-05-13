@@ -168,7 +168,7 @@ void mouseClicked() {
 
 void displayCursorImage() {
   switch (tools) {
-  case 1:
+  case 1:  
     switch(rot1) {
     case 1: 
       rImage = loadImage("UpRight.PNG");

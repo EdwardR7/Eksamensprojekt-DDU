@@ -120,7 +120,29 @@ void draw() {
   try {
     if (tools == 1) {
       rImage.resize(50, 50);
-       image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+    } else if (tools == 3) {      
+      switch(rot2) {
+      case 1: 
+        rImage.resize(32, 16);
+        image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        break;
+      case 2: 
+      rImage.resize(32, 32);
+      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        break;
+      case 3: 
+      rImage.resize(16, 32);
+      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        break;
+      case 4: 
+      rImage.resize(32, 32);
+      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        break;
+      }
+    } else if (tools == 4) {
+      rImage.resize(16, 16);
+      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
     }
   }
   catch(Exception e) {
@@ -184,6 +206,54 @@ void displayCursorImage() {
       break;
     }
     break;
-  case 2:
+
+
+  case 3:
+    switch(rot2) {
+    case 1: 
+      rImage = loadImage("dHorizontal.png");
+      break;
+    case 2: 
+      rImage = loadImage("dDiagonal1.png");
+      break;
+    case 3: 
+      rImage = loadImage("dVertical.png");
+      break;
+    case 4: 
+      rImage = loadImage("dDiagonal2.png");
+      break;
+    }
+    break;
+
+
+
+  case 4:
+    switch(rot3) {
+    case 1: 
+      rImage = loadImage("sUP.png");
+      break;
+    case 2: 
+      rImage = loadImage("sUPRIGHT.png");
+      break;
+    case 3: 
+      rImage = loadImage("sRIGHT.png");
+      break;
+    case 4: 
+      rImage = loadImage("sDOWNRIGHT.png");
+      break;
+    case 5: 
+      rImage = loadImage("sDOWN.png");
+      break;
+    case 6: 
+      rImage = loadImage("sDOWNLEFT.png");
+      break;
+    case 7: 
+      rImage = loadImage("sLEFT.png");
+      break;
+    case 8: 
+      rImage = loadImage("sUPLEFT.png");
+      break;
+    }
+    break;
   }
 }

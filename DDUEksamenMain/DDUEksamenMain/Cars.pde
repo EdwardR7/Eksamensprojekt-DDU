@@ -131,6 +131,7 @@ class cars {
         return velocity;
       }
     }
+    score+=1;
     velocity = calcVel(null, Scale/Scale, 0.2);
     return velocity;
   }

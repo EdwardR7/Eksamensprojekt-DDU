@@ -119,16 +119,25 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   b420.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
       public void handle(ActionEvent event) {
-        displayCursorImage();
+      displayCursorImage();
+      car.clear();
+      for (int r = 0; r < rows; r++) {
+        for (int R = 0; R < columns; R++) {
+          vejFelt[r][R].collision = false;
+        }
+      }
       for (int r = 0; r < rows; r++) {
         for (int R = 0; R < columns; R++) {
           if (vejFelt[r][R].roadtile && vejFelt[r][R].retning != 0 && !vejFelt[r][R].collision) {
-            if(random(1) < 0.3){
-            car.add(new cars(r, R));
+            if (random(1) < 0.3333) {
+              car.add(new cars(r, R));
             }
           }
         }
       }
+      simstart = true;
+      simtimer = 0;
+      score = 0;
     }
   }
   );
@@ -136,7 +145,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   b11.setOnAction(new EventHandler<ActionEvent>() { //SAVE MAP
     @Override
       public void handle(ActionEvent event) {
-        displayCursorImage();
+      displayCursorImage();
       DB.saveMap(mapName.getText());
 
 

@@ -79,7 +79,6 @@ class DBMetoder {
             }
           }
         }
-
         catch(Exception e) {
         }
       }

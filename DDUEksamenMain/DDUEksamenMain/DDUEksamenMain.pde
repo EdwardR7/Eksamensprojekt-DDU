@@ -45,6 +45,10 @@ ArrayList<String> mapContents = new ArrayList<String>();
 
 PImage rImage;
 
+int score;
+int simtimer = 0;
+boolean simstart = false;
+
 Scene scene;
 Stage stage;
 
@@ -111,8 +115,7 @@ void draw() {
     c.move();
     c.display();
   }
-  fill(1);
-  text(frameRate, 20, 20);
+
 
   try {
     if (tools == 1) {
@@ -148,6 +151,23 @@ void draw() {
   }
   catch(Exception e) {
   }
+  fill(1);
+  text(frameRate, 20, 20);
+  
+  if (simstart) {
+    if (simtimer > 1200) {
+      simstart = false;
+      car.clear();
+      for (int r = 0; r < rows; r++) {
+        for (int R = 0; R < columns; R++) {
+          vejFelt[r][R].collision = false;
+        }
+      }
+    } else {
+      simtimer++;
+    }
+  }
+  text("Simulation score: " + score/100, 20, 40);
 }
 
 void drawGrid() {
@@ -210,7 +230,7 @@ void displayCursorImage() {
       break;
     }
     break;
-    case 2:
+  case 2:
     rImage = null;
     break;
 
@@ -264,9 +284,9 @@ void displayCursorImage() {
     rImage = loadImage("Lyskryds.png");
     break;
   case 6:
-  rImage = null;
-    
-    default:
+    rImage = null;
+
+  default:
     rImage = null;
     break;
   }

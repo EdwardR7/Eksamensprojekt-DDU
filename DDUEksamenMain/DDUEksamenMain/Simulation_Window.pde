@@ -7,6 +7,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
 
   final Button b1 = (Button) namespace.get("butt1"); // get element by fx:id  //insert corners
   final Button b111 = (Button) namespace.get("butt111"); // get element by fx:id  //LYSKRYDS
+  final Button b420 = (Button) namespace.get("butt420"); // get element by fx:id  //Start simulation
   final Button b4 = (Button) namespace.get("butt4"); // get element by fx:id //insert cars
   final Button b69 = (Button) namespace.get("butt69"); // get element by fx:id //SLET KNAP
 
@@ -35,6 +36,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
       }
       catch(Exception e) {
       }
+      displayCursorImage();
     }
   }
   );
@@ -48,11 +50,12 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
     }
   }
   );
-    //SLETKNAP BUTTON
+  //SLETKNAP BUTTON
   b69.setOnAction(new EventHandler<ActionEvent>() { 
     @Override
       public void handle(ActionEvent event) {
       tools = 6;
+      displayCursorImage();
     }
   }
   );
@@ -72,6 +75,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
       public void handle(ActionEvent event) {
       cursor(ARROW);
       tools = 2;
+      displayCursorImage();
     }
   }
   );
@@ -88,14 +92,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   b6.setOnAction(new EventHandler<ActionEvent>() { //ROTATE LEFT
     @Override
       public void handle(ActionEvent event) {
-      rot -= 1;
-      if (rot<1) {
-        if (tools == 4) {
-          rot = 8;
-        } else {
-          rot = 4;
-        }
-      }
+      rotateLeft();
       displayCursorImage();
     }
   }
@@ -103,12 +100,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
   b7.setOnAction(new EventHandler<ActionEvent>() { //ROTATE RIGHT
     @Override
       public void handle(ActionEvent event) {
-      rot += 1;
-      if (tools == 4 && rot > 8) {
-        rot=1;
-      } else if (tools != 4 && rot > 4) {
-        rot = 1;
-      }
+      rotateRight();
       displayCursorImage();
     }
   }
@@ -123,10 +115,37 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
     }
   }
   );
+  //SIMULATION BUTTON
+  b420.setOnAction(new EventHandler<ActionEvent>() { 
+    @Override
+      public void handle(ActionEvent event) {
+      displayCursorImage();
+      car.clear();
+      for (int r = 0; r < rows; r++) {
+        for (int R = 0; R < columns; R++) {
+          vejFelt[r][R].collision = false;
+        }
+      }
+      for (int r = 0; r < rows; r++) {
+        for (int R = 0; R < columns; R++) {
+          if (vejFelt[r][R].roadtile && vejFelt[r][R].retning != 0 && !vejFelt[r][R].collision) {
+            if (random(1) < 0.3333) {
+              car.add(new cars(r, R));
+            }
+          }
+        }
+      }
+      simstart = true;
+      simtimer = 0;
+      score = 0;
+    }
+  }
+  );
 
   b11.setOnAction(new EventHandler<ActionEvent>() { //SAVE MAP
     @Override
       public void handle(ActionEvent event) {
+      displayCursorImage();
       DB.saveMap(mapName.getText());
 
 

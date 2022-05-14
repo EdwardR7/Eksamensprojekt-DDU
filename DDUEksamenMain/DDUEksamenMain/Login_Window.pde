@@ -57,12 +57,12 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
           message = "Intet brugernavn eller kodeord indskrevet";
         } else {
 
-          
+
           DB.LogVerify(Username.getText(), Password.getText());
-          
-          if(Logged == true){
-          mapContents.clear();
-          stage.setScene(menuController(stage, canvas));
+
+          if (Logged == true) {
+            mapContents.clear();
+            stage.setScene(menuController(stage, canvas));
           }
         }
 

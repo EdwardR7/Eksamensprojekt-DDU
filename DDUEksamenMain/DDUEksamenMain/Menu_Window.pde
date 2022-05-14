@@ -3,7 +3,7 @@ Scene menuController(final Stage stage, final Canvas canvas) throws IOException 
 
   final Parent sceneFromFXML = loader.load();
   final Map<String, Object> namespace = loader.getNamespace();
-  final Scene newScene = new Scene(sceneFromFXML,1000, 720, false, SceneAntialiasing.BALANCED);
+  final Scene newScene = new Scene(sceneFromFXML, 1000, 720, false, SceneAntialiasing.BALANCED);
 
   final Button ClearScene = (Button) namespace.get("StartSimulation"); // get element by fx:id  //insert corners
   final Button Exit = (Button) namespace.get("Exit"); // get element by fx:id  //insert corners

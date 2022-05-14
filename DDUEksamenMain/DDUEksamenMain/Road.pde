@@ -42,12 +42,12 @@ class Road {
       if (Check) {
         roadDirections();
       }
-      
+
       if (lyskryds) {
-        if (timer > 5*frameRate) {
+        if (timer > 300) {
           farve = color(0, 255, 0);
           timer+=1;
-          if (timer > 10*frameRate) {
+          if (timer > 600) {
             timer = 0;
           }
         } else {
@@ -108,10 +108,9 @@ class Road {
       shape(l15);
       shape(l16);
       break;
-     default:
-     break;
+    default:
+      break;
     }
-    
   }
   void vejLinjer() {
     //Alle Vejlinjer

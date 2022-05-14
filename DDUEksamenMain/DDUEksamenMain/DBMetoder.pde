@@ -117,31 +117,32 @@ class DBMetoder {
         vejFelt[r][R] = new Road(r, R, 9, false, false, 0);
       }
     }
+    rImage = null;
+    tools = 0;
   }
-  
-  String hashKode(String inputTekst){
+
+  String hashKode(String inputTekst) {
     try {
-    //Vha. MessageDigest kan vi anvende en hashing algoritme.... her SHA-256 ...
-    //prøv f.eks. MD5 og se om du kan bryde den ved at søge på nettet!
-    MessageDigest md = MessageDigest.getInstance("SHA-256"); 
+      //Vha. MessageDigest kan vi anvende en hashing algoritme.... her SHA-256 ...
+      //prøv f.eks. MD5 og se om du kan bryde den ved at søge på nettet!
+      MessageDigest md = MessageDigest.getInstance("SHA-256"); 
 
-    //MassageDigest objektet "fodres" med teksten, der skal "hashes"
-    md.update(inputTekst.getBytes());    
+      //MassageDigest objektet "fodres" med teksten, der skal "hashes"
+      md.update(inputTekst.getBytes());    
 
-    //digest funktionen giver "hash-værdien", men i hexadecimale bytes 
-    byte[] byteList = md.digest();
+      //digest funktionen giver "hash-værdien", men i hexadecimale bytes 
+      byte[] byteList = md.digest();
 
-    //Her anvendes processings hex funktion, der kan konvertere hexadecimale bytes til Strings
-    //så det er muligt at læse "hash-værdien"
-    StringBuffer hashedValueBuffer = new StringBuffer();
-    for (byte b : byteList)hashedValueBuffer.append(hex(b)); 
-    return hashedValueBuffer.toString();
+      //Her anvendes processings hex funktion, der kan konvertere hexadecimale bytes til Strings
+      //så det er muligt at læse "hash-værdien"
+      StringBuffer hashedValueBuffer = new StringBuffer();
+      for (byte b : byteList)hashedValueBuffer.append(hex(b)); 
+      return hashedValueBuffer.toString();
+    }
+
+    catch (Exception e) {
+      System.out.println("Exception: "+e);
+      return "";
+    }
   }
-
-  catch (Exception e) {
-    System.out.println("Exception: "+e);
-    return "";
-  }
-  }
-  
 }

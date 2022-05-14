@@ -18,7 +18,6 @@ class cars {
     velocity = new PVector(0, 0);
     farve = (int) random(#000000);
     topspeed = 3;
-  
   }
 
   void display() {
@@ -36,7 +35,7 @@ class cars {
     popMatrix();
   }
 
- void move() {
+  void move() {
     try {
       indexX = floor(location.x/Scale);
       indexY = floor(location.y/Scale);
@@ -45,7 +44,7 @@ class cars {
         vejFelt[indexX][indexY].collision = true;
         CurrentRoad = vejFelt[indexX][indexY];
       }
-      
+
       if (vejFelt[indexX][indexY].farve != color(255, 0, 0) && vejFelt[indexX][indexY].retning != 0) {
         execute(vejFelt[indexX][indexY].retning); // faktisk kode
       }
@@ -115,7 +114,7 @@ class cars {
     }
     // Location changes by velocity
     location.add(velocity);
-    
+
     if (CurrentRoad != vejFelt[floor(location.x/Scale)][floor(location.y/Scale)]) {
       vejFelt[CurrentRoad.indexX][CurrentRoad.indexY].collision = false;
     }
@@ -132,119 +131,119 @@ class cars {
         return velocity;
       }
     }
-  velocity = calcVel(null, Scale/Scale, 0.2);
-  return velocity;
-}
-
-
-PVector calcVel(PVector destination, float acc, float velLimit) {
-  //Compute a vector that points to distination
-  acceleration = PVector.sub(destination, location);
-
-  rotateangle = getAngle(location.x, location.y, destination.x, destination.y);
-  // Set magnitude of acceleration
-  acceleration.setMag(acc);
-  // Velocity changes according to acceleration
-  velocity.add(acceleration);
-  // Limit the velocity by topspeed
-  velocity.limit(velLimit);
-  if (Check) {
-    stroke(1);
-    line(location.x, location.y, destination.x, destination.y);
-    strokeWeight(1);
+    velocity = calcVel(null, Scale/Scale, 0.2);
+    return velocity;
   }
 
-  return velocity;
-}
 
-void lyskrydslogic(int type, int rd) {
-  switch(type) {
-  case 1:
-    switch(rd) {
-    case 1:
-      if (indexX <= Lyskrydsfelt.indexX) {
-        execute(1);
-      }
-      break;
-    case  2: 
-      if (indexX == Lyskrydsfelt.indexX-1) {
-        execute(3);
-      }
-      break;
-    case 3:
-      if (indexX == Lyskrydsfelt.indexX-1) {
-        execute(6);
-      }
-      if (indexX == Lyskrydsfelt.indexX-2) {
-        execute(4);
-      }
+  PVector calcVel(PVector destination, float acc, float velLimit) {
+    //Compute a vector that points to distination
+    acceleration = PVector.sub(destination, location);
+
+    rotateangle = getAngle(location.x, location.y, destination.x, destination.y);
+    // Set magnitude of acceleration
+    acceleration.setMag(acc);
+    // Velocity changes according to acceleration
+    velocity.add(acceleration);
+    // Limit the velocity by topspeed
+    velocity.limit(velLimit);
+    if (Check) {
+      stroke(1);
+      line(location.x, location.y, destination.x, destination.y);
+      strokeWeight(1);
     }
-    break;
-  case 2:
-    switch(rd) {
-    case 1:
-      if (indexX >= Lyskrydsfelt.indexX) {
-        execute(2);
-      }
-      break;
-    case  2: 
-      if (indexX == Lyskrydsfelt.indexX+1) {
-        execute(4);
-      }
-      break;
-    case 3:
-      if (indexX == Lyskrydsfelt.indexX+1) {
-        execute(7);
-      }
-      if (indexX == Lyskrydsfelt.indexX+2) {
-        execute(3);
-      }
-    }
-    break;
-  case 3:
-    switch(rd) {
-    case 1:
-      if (indexY <= Lyskrydsfelt.indexY) {
-        execute(3);
-      }
-      break;
-    case  2: 
-      if (indexY == Lyskrydsfelt.indexY-1) {
-        execute(2);
-      }
-      break;
-    case 3:
-      if (indexY == Lyskrydsfelt.indexY-1) {
-        execute(5);
-      }
-      if (indexY == Lyskrydsfelt.indexY-2) {
-        execute(1);
-      }
-    }
-    break;
-  case 4:
-    switch(rd) {
-    case 1:
-      if (indexY >= Lyskrydsfelt.indexY) {
-        execute(4);
-      }
-      break;
-    case  2: 
-      if (indexY == Lyskrydsfelt.indexY+1) {
-        execute(1);
-      }
-      break;
-    case 3:
-      if (indexY == Lyskrydsfelt.indexY+1) {
-        execute(8);
-      } 
-      if (indexY == Lyskrydsfelt.indexY+2) {
-        execute(2);
-      }
-    }
-    break;
+
+    return velocity;
   }
-}
+
+  void lyskrydslogic(int type, int rd) {
+    switch(type) {
+    case 1:
+      switch(rd) {
+      case 1:
+        if (indexX <= Lyskrydsfelt.indexX) {
+          execute(1);
+        }
+        break;
+      case  2: 
+        if (indexX == Lyskrydsfelt.indexX-1) {
+          execute(3);
+        }
+        break;
+      case 3:
+        if (indexX == Lyskrydsfelt.indexX-1) {
+          execute(6);
+        }
+        if (indexX == Lyskrydsfelt.indexX-2) {
+          execute(4);
+        }
+      }
+      break;
+    case 2:
+      switch(rd) {
+      case 1:
+        if (indexX >= Lyskrydsfelt.indexX) {
+          execute(2);
+        }
+        break;
+      case  2: 
+        if (indexX == Lyskrydsfelt.indexX+1) {
+          execute(4);
+        }
+        break;
+      case 3:
+        if (indexX == Lyskrydsfelt.indexX+1) {
+          execute(7);
+        }
+        if (indexX == Lyskrydsfelt.indexX+2) {
+          execute(3);
+        }
+      }
+      break;
+    case 3:
+      switch(rd) {
+      case 1:
+        if (indexY <= Lyskrydsfelt.indexY) {
+          execute(3);
+        }
+        break;
+      case  2: 
+        if (indexY == Lyskrydsfelt.indexY-1) {
+          execute(2);
+        }
+        break;
+      case 3:
+        if (indexY == Lyskrydsfelt.indexY-1) {
+          execute(5);
+        }
+        if (indexY == Lyskrydsfelt.indexY-2) {
+          execute(1);
+        }
+      }
+      break;
+    case 4:
+      switch(rd) {
+      case 1:
+        if (indexY >= Lyskrydsfelt.indexY) {
+          execute(4);
+        }
+        break;
+      case  2: 
+        if (indexY == Lyskrydsfelt.indexY+1) {
+          execute(1);
+        }
+        break;
+      case 3:
+        if (indexY == Lyskrydsfelt.indexY+1) {
+          execute(8);
+        } 
+        if (indexY == Lyskrydsfelt.indexY+2) {
+          execute(2);
+        }
+      }
+      break;
+    }
+  }
 }
 
 float getAngle(float pX1, float pY1, float pX2, float pY2) {

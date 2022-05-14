@@ -3,7 +3,7 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
 
   final Parent sceneFromFXML = loader.load();
   final Map<String, Object> namespace = loader.getNamespace();
-  final Scene newScene = new Scene(sceneFromFXML,1000, 720, false, SceneAntialiasing.BALANCED);
+  final Scene newScene = new Scene(sceneFromFXML, 1000, 720, false, SceneAntialiasing.BALANCED);
 
   final Button register = (Button) namespace.get("register"); // get element by fx:id  //insert corners
   final Button goBack = (Button) namespace.get("back"); // get element by fx:id  //insert corners

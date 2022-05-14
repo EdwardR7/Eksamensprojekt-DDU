@@ -57,8 +57,6 @@ protected PSurface initSurface() {
   final Stage stage = (Stage) oldScene.getWindow();
   surface.setTitle("Eksamensprojekt DDU");
 
-
-
   try {
     Platform.runLater(new Runnable() {
       @Override
@@ -100,6 +98,7 @@ void setup() {
 }
 
 void draw() {
+
   background(50, 205, 50);
   drawGrid();
 
@@ -147,119 +146,147 @@ void draw() {
     }
     image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
   }
-    catch(Exception e) {
-    }
+  catch(Exception e) {
   }
+}
 
-  void drawGrid() {
-    stroke(34, 139, 34);
-    // Begin loop for columns
-    for (int i = 0; i < height; i+=Scale) {
-      line(0, i, width, i);
-    }
-    // Begin loop for rows
-    for (int i = 0; i < width; i+=Scale) {
-      line(i, 0, i, height);
-    }
+void drawGrid() {
+  stroke(34, 139, 34);
+  // Begin loop for columns
+  for (int i = 0; i < height; i+=Scale) {
+    line(0, i, width, i);
   }
-
-  void mouseClicked() {
-    try {
-      RoadPieces roadPiece = new RoadPieces();
-      switch(tools) { //Corner roadpiece
-      case 1:
-        roadPiece.Corners();
-        break;
-      case 2: //Insert car
-        if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
-          car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
-        }
-        break;
-      case 3://doubleRoadpiece
-        roadPiece.doubleRoad();
-        break;
-      case 4://singleRoadpiece
-        roadPiece.singleRoad();
-        break;
-      case 5://singleRoadpiece
-        roadPiece.traficlights();
-        break;
-      case 6:
-        vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, false, false, 0);
-        break;
-      }
-    }
-    catch( Exception e) {
-    }
+  // Begin loop for rows
+  for (int i = 0; i < width; i+=Scale) {
+    line(i, 0, i, height);
   }
+}
 
-  void displayCursorImage() {
-    switch (tools) {
-    case 1:  
-      switch(rot) {
-      case 1: 
-        rImage = loadImage("UpRight.PNG");
-        break;
-      case 2: 
-        rImage = loadImage("UpLeft.PNG");
-        break;
-      case 3: 
-        rImage = loadImage("DownLeft.PNG");
-        break;
-      case 4: 
-        rImage = loadImage("DownRight.PNG");
-        break;
+void mouseClicked() {
+  try {
+    RoadPieces roadPiece = new RoadPieces();
+    switch(tools) { //Corner roadpiece
+    case 1:
+      roadPiece.Corners();
+      break;
+    case 2: //Insert car
+      if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
+        car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
       }
       break;
-
-    case 3:
-      switch(rot) {
-      case 1: 
-        rImage = loadImage("dHorizontal.png");
-        break;
-      case 2: 
-        rImage = loadImage("dDiagonal1.png");
-        break;
-      case 3: 
-        rImage = loadImage("dVertical.png");
-        break;
-      case 4: 
-        rImage = loadImage("dDiagonal2.png");
-        break;
-      }
+    case 3://doubleRoadpiece
+      roadPiece.doubleRoad();
       break;
-
-    case 4:
-      switch(rot) {
-      case 1: 
-        rImage = loadImage("sUP.png");
-        break;
-      case 2: 
-        rImage = loadImage("sUPRIGHT.png");
-        break;
-      case 3: 
-        rImage = loadImage("sRIGHT.png");
-        break;
-      case 4: 
-        rImage = loadImage("sDOWNRIGHT.png");
-        break;
-      case 5: 
-        rImage = loadImage("sDOWN.png");
-        break;
-      case 6: 
-        rImage = loadImage("sDOWNLEFT.png");
-        break;
-      case 7: 
-        rImage = loadImage("sLEFT.png");
-        break;
-      case 8: 
-        rImage = loadImage("sUPLEFT.png");
-        break;
-      }
+    case 4://singleRoadpiece
+      roadPiece.singleRoad();
       break;
-
-    case 5:
-      rImage = loadImage("Lyskryds.png");
+    case 5://singleRoadpiece
+      roadPiece.traficlights();
+      break;
+    case 6:
+      vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, false, false, 0);
       break;
     }
   }
+  catch( Exception e) {
+  }
+}
+
+void displayCursorImage() {
+  switch (tools) {
+  case 1:  
+    switch(rot) {
+    case 1: 
+      rImage = loadImage("UpRight.PNG");
+      break;
+    case 2: 
+      rImage = loadImage("UpLeft.PNG");
+      break;
+    case 3: 
+      rImage = loadImage("DownLeft.PNG");
+      break;
+    case 4: 
+      rImage = loadImage("DownRight.PNG");
+      break;
+    }
+    break;
+    case 2:
+    rImage = null;
+    break;
+
+  case 3:
+    switch(rot) {
+    case 1: 
+      rImage = loadImage("dHorizontal.png");
+      break;
+    case 2: 
+      rImage = loadImage("dDiagonal1.png");
+      break;
+    case 3: 
+      rImage = loadImage("dVertical.png");
+      break;
+    case 4: 
+      rImage = loadImage("dDiagonal2.png");
+      break;
+    }
+    break;
+
+  case 4:
+    switch(rot) {
+    case 1: 
+      rImage = loadImage("sUP.png");
+      break;
+    case 2: 
+      rImage = loadImage("sUPRIGHT.png");
+      break;
+    case 3: 
+      rImage = loadImage("sRIGHT.png");
+      break;
+    case 4: 
+      rImage = loadImage("sDOWNRIGHT.png");
+      break;
+    case 5: 
+      rImage = loadImage("sDOWN.png");
+      break;
+    case 6: 
+      rImage = loadImage("sDOWNLEFT.png");
+      break;
+    case 7: 
+      rImage = loadImage("sLEFT.png");
+      break;
+    case 8: 
+      rImage = loadImage("sUPLEFT.png");
+      break;
+    }
+    break;
+
+  case 5:
+    rImage = loadImage("Lyskryds.png");
+    break;
+  case 6:
+  rImage = null;
+    
+    default:
+    rImage = null;
+    break;
+  }
+}
+
+void rotateRight() {
+  rot += 1;
+  if (tools == 4 && rot > 8) {
+    rot=1;
+  } else if (tools != 4 && rot > 4) {
+    rot = 1;
+  }
+}
+void rotateLeft() {
+  rot -= 1;
+  if (rot<1) {
+    if (tools == 4) {
+      rot = 8;
+    } else {
+      rot = 4;
+    }
+  }
+}

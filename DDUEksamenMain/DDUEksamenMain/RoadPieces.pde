@@ -2,7 +2,7 @@ class RoadPieces {
   PImage rImage;
 
   void Corners() { //size 61x61 pixels for images
-    switch(rot1) {
+    switch(rot) {
       //1 = left     2 = right      3 = up        4 = down      5 = leftup      6 = leftdown      7 = rightup      8 = rightdown;  in the constructor of road
     case 1: //UpRight
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 4, true);
@@ -67,7 +67,7 @@ class RoadPieces {
   }
 
   void doubleRoad() {
-    switch(rot2) {
+    switch(rot) {
     case 1: // vʌ horizontal
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 4, true);
       vejFelt[round(mouseX/Scale+1)][round(mouseY/Scale)] = new Road(round(mouseX/Scale+1), round(mouseY/Scale), 3, true);
@@ -91,7 +91,7 @@ class RoadPieces {
   }
 
   void singleRoad() {
-    switch(rot3) {
+    switch(rot) {
     case 1: // Up
       vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 3, true);
       break;

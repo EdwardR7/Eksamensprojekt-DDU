@@ -29,9 +29,7 @@ Road[][] vejFelt; //Vejfelter
 
 ArrayList<cars> car;
 
-int rot1;
-int rot2;
-int rot3;
+int rot;
 int tools;
 
 int userID;
@@ -124,7 +122,7 @@ void draw() {
     } 
     
     if (tools == 3) {      
-      switch(rot2) {
+      switch(rot) {
       case 1: 
         rImage.resize(32, 16);
         image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
@@ -186,6 +184,9 @@ void mouseClicked() {
     case 5://singleRoadpiece
       roadPiece.traficlights();
       break;
+     case 6:
+     vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, false, false, 0);
+     break;
     }
   }
   catch( Exception e) {
@@ -195,7 +196,7 @@ void mouseClicked() {
 void displayCursorImage() {
   switch (tools) {
   case 1:  
-    switch(rot1) {
+    switch(rot) {
     case 1: 
       rImage = loadImage("UpRight.PNG");
       break;
@@ -212,7 +213,7 @@ void displayCursorImage() {
     break;
 
   case 3:
-    switch(rot2) {
+    switch(rot) {
     case 1: 
       rImage = loadImage("dHorizontal.png");
       break;
@@ -231,7 +232,7 @@ void displayCursorImage() {
 
 
   case 4:
-    switch(rot3) {
+    switch(rot) {
     case 1: 
       rImage = loadImage("sUP.png");
       break;

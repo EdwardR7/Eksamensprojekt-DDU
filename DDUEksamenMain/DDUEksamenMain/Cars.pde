@@ -50,7 +50,6 @@ class cars {
         execute(vejFelt[indexX][indexY].retning); // faktisk kode
       }
 
-
       if (vejFelt[indexX][indexY].farve == color(0, 255, 0)) {
         Lyskrydsfelt = vejFelt[indexX][indexY];
         randomInt = floor(random(1, 3.9));

@@ -121,7 +121,9 @@ void draw() {
     if (tools == 1) {
       rImage.resize(50, 50);
       image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
-    } else if (tools == 3) {      
+    } 
+    
+    if (tools == 3) {      
       switch(rot2) {
       case 1: 
         rImage.resize(32, 16);
@@ -140,7 +142,9 @@ void draw() {
       image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
         break;
       }
-    } else if (tools == 4) {
+    } 
+    
+    if (tools == 4) {
       rImage.resize(16, 16);
       image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
     }
@@ -206,7 +210,6 @@ void displayCursorImage() {
       break;
     }
     break;
-
 
   case 3:
     switch(rot2) {

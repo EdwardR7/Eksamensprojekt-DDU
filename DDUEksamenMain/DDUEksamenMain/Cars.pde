@@ -45,10 +45,11 @@ class cars {
         vejFelt[indexX][indexY].collision = true;
         CurrentRoad = vejFelt[indexX][indexY];
       }
-
+      
       if (vejFelt[indexX][indexY].farve != color(255, 0, 0) && vejFelt[indexX][indexY].retning != 0) {
         execute(vejFelt[indexX][indexY].retning); // faktisk kode
       }
+
 
       if (vejFelt[indexX][indexY].farve == color(0, 255, 0)) {
         Lyskrydsfelt = vejFelt[indexX][indexY];
@@ -115,6 +116,7 @@ class cars {
     }
     // Location changes by velocity
     location.add(velocity);
+    
     if (CurrentRoad != vejFelt[floor(location.x/Scale)][floor(location.y/Scale)]) {
       vejFelt[CurrentRoad.indexX][CurrentRoad.indexY].collision = false;
     }
@@ -131,7 +133,6 @@ class cars {
         return velocity;
       }
     }
-  
   velocity = calcVel(null, Scale/Scale, 0.2);
   return velocity;
 }

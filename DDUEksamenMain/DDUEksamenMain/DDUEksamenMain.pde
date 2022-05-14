@@ -118,146 +118,148 @@ void draw() {
   try {
     if (tools == 1) {
       rImage.resize(50, 50);
-      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
     } 
-    
+
     if (tools == 3) {      
       switch(rot) {
       case 1: 
         rImage.resize(32, 16);
-        image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
         break;
       case 2: 
-      rImage.resize(32, 32);
-      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        rImage.resize(32, 32);
+
         break;
       case 3: 
-      rImage.resize(16, 32);
-      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        rImage.resize(16, 32);
+
         break;
       case 4: 
-      rImage.resize(32, 32);
-      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+        rImage.resize(32, 32);
+
         break;
       }
     } 
-    
     if (tools == 4) {
       rImage.resize(16, 16);
-      image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+    }
+    if (tools == 5) {
+      rImage.resize(64, 64);
+    }
+    image(rImage, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].x, vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].y);
+  }
+    catch(Exception e) {
     }
   }
-  catch(Exception e) {
-  }
-}
 
-void drawGrid() {
-  stroke(34, 139, 34);
-  // Begin loop for columns
-  for (int i = 0; i < height; i+=Scale) {
-    line(0, i, width, i);
+  void drawGrid() {
+    stroke(34, 139, 34);
+    // Begin loop for columns
+    for (int i = 0; i < height; i+=Scale) {
+      line(0, i, width, i);
+    }
+    // Begin loop for rows
+    for (int i = 0; i < width; i+=Scale) {
+      line(i, 0, i, height);
+    }
   }
-  // Begin loop for rows
-  for (int i = 0; i < width; i+=Scale) {
-    line(i, 0, i, height);
-  }
-}
 
-void mouseClicked() {
-  try {
-    RoadPieces roadPiece = new RoadPieces();
-    switch(tools) { //Corner roadpiece
-    case 1:
-      roadPiece.Corners();
-      break;
-    case 2: //Insert car
-      if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
-        car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+  void mouseClicked() {
+    try {
+      RoadPieces roadPiece = new RoadPieces();
+      switch(tools) { //Corner roadpiece
+      case 1:
+        roadPiece.Corners();
+        break;
+      case 2: //Insert car
+        if (vejFelt[round(mouseX/Scale)][round(mouseY/Scale)].roadtile) {
+          car.add(new cars(round(mouseX)/Scale, round(mouseY)/Scale));
+        }
+        break;
+      case 3://doubleRoadpiece
+        roadPiece.doubleRoad();
+        break;
+      case 4://singleRoadpiece
+        roadPiece.singleRoad();
+        break;
+      case 5://singleRoadpiece
+        roadPiece.traficlights();
+        break;
+      case 6:
+        vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, false, false, 0);
+        break;
+      }
+    }
+    catch( Exception e) {
+    }
+  }
+
+  void displayCursorImage() {
+    switch (tools) {
+    case 1:  
+      switch(rot) {
+      case 1: 
+        rImage = loadImage("UpRight.PNG");
+        break;
+      case 2: 
+        rImage = loadImage("UpLeft.PNG");
+        break;
+      case 3: 
+        rImage = loadImage("DownLeft.PNG");
+        break;
+      case 4: 
+        rImage = loadImage("DownRight.PNG");
+        break;
       }
       break;
-    case 3://doubleRoadpiece
-      roadPiece.doubleRoad();
+
+    case 3:
+      switch(rot) {
+      case 1: 
+        rImage = loadImage("dHorizontal.png");
+        break;
+      case 2: 
+        rImage = loadImage("dDiagonal1.png");
+        break;
+      case 3: 
+        rImage = loadImage("dVertical.png");
+        break;
+      case 4: 
+        rImage = loadImage("dDiagonal2.png");
+        break;
+      }
       break;
-    case 4://singleRoadpiece
-      roadPiece.singleRoad();
+
+    case 4:
+      switch(rot) {
+      case 1: 
+        rImage = loadImage("sUP.png");
+        break;
+      case 2: 
+        rImage = loadImage("sUPRIGHT.png");
+        break;
+      case 3: 
+        rImage = loadImage("sRIGHT.png");
+        break;
+      case 4: 
+        rImage = loadImage("sDOWNRIGHT.png");
+        break;
+      case 5: 
+        rImage = loadImage("sDOWN.png");
+        break;
+      case 6: 
+        rImage = loadImage("sDOWNLEFT.png");
+        break;
+      case 7: 
+        rImage = loadImage("sLEFT.png");
+        break;
+      case 8: 
+        rImage = loadImage("sUPLEFT.png");
+        break;
+      }
       break;
-    case 5://singleRoadpiece
-      roadPiece.traficlights();
+
+    case 5:
+      rImage = loadImage("Lyskryds.png");
       break;
-     case 6:
-     vejFelt[round(mouseX/Scale)][round(mouseY/Scale)] = new Road(round(mouseX/Scale), round(mouseY/Scale), 9, false, false, 0);
-     break;
     }
   }
-  catch( Exception e) {
-  }
-}
-
-void displayCursorImage() {
-  switch (tools) {
-  case 1:  
-    switch(rot) {
-    case 1: 
-      rImage = loadImage("UpRight.PNG");
-      break;
-    case 2: 
-      rImage = loadImage("UpLeft.PNG");
-      break;
-    case 3: 
-      rImage = loadImage("DownLeft.PNG");
-      break;
-    case 4: 
-      rImage = loadImage("DownRight.PNG");
-      break;
-    }
-    break;
-
-  case 3:
-    switch(rot) {
-    case 1: 
-      rImage = loadImage("dHorizontal.png");
-      break;
-    case 2: 
-      rImage = loadImage("dDiagonal1.png");
-      break;
-    case 3: 
-      rImage = loadImage("dVertical.png");
-      break;
-    case 4: 
-      rImage = loadImage("dDiagonal2.png");
-      break;
-    }
-    break;
-
-
-
-  case 4:
-    switch(rot) {
-    case 1: 
-      rImage = loadImage("sUP.png");
-      break;
-    case 2: 
-      rImage = loadImage("sUPRIGHT.png");
-      break;
-    case 3: 
-      rImage = loadImage("sRIGHT.png");
-      break;
-    case 4: 
-      rImage = loadImage("sDOWNRIGHT.png");
-      break;
-    case 5: 
-      rImage = loadImage("sDOWN.png");
-      break;
-    case 6: 
-      rImage = loadImage("sDOWNLEFT.png");
-      break;
-    case 7: 
-      rImage = loadImage("sLEFT.png");
-      break;
-    case 8: 
-      rImage = loadImage("sUPLEFT.png");
-      break;
-    }
-    break;
-  }
-}

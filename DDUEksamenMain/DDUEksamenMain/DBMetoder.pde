@@ -32,7 +32,7 @@ class DBMetoder {
             message = "Brugeren blev registreret";
           }
         } else {
-          message = "Kodeordene stemmer ikke overens";
+          message = "Kodeordene stemmer ikke overens, eller intet brugernavn indtastet";
         }
       }
     }

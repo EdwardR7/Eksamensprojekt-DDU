@@ -310,3 +310,7 @@ void rotateLeft() {
     }
   }
 }
+
+float getAngle(float pX1, float pY1, float pX2, float pY2) {
+  return atan2(pY2 - pY1, pX2 - pX1)* 180/ PI;
+}

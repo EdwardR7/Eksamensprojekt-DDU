@@ -11,7 +11,6 @@ Scene loginController(final Stage stage, final Canvas canvas) throws IOException
   final Button Login = (Button) namespace.get("Login"); // get element by fx:id  //insert corners
 
 
-
   final TextField Username = (TextField) namespace.get("Username"); // get element by fx:id  //insert corners
   final TextField Password = (TextField) namespace.get("Password"); // get element by fx:id  //insert corners
 

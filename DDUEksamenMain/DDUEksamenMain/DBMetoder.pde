@@ -32,7 +32,7 @@ class DBMetoder {
             message = "Brugeren blev registreret";
           }
         } else {
-          message = "Kodeordene stemmer ikke overens";
+          message = "Kodeordene stemmer ikke overens, eller intet brugernavn indtastet";
         }
       }
     }
@@ -53,6 +53,12 @@ class DBMetoder {
 
   void saveMap(String MapName) { //Inserts map data into most recently created map ID 
     int mapID;
+
+    if (db.connect()) {
+      db.query("DELETE FROM Maps WHERE Maps.Name = '" + MapName + "' AND Maps.User_ID= '" + userID + "'");
+    }
+
+
     if (db.connect()) {
       db.query("INSERT INTO Maps(Name, User_ID) VALUES ('" + MapName + "', '" + userID + "'); ");
     }

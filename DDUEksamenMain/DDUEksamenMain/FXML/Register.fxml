@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="DDUEksamenMain">
    <children>
       <AnchorPane prefHeight="720.0" prefWidth="417.0" style="-fx-background-color: #0598ff;">
          <children>
@@ -29,7 +30,7 @@
       <Button fx:id="back" layoutX="611.0" layoutY="642.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="220.0" text="Gå tilbage" />
       <Label fx:id="Message" layoutX="558.0" layoutY="463.0" prefHeight="73.0" prefWidth="327.0" textFill="#d70f0f" />
       <TextField fx:id="regUser" layoutX="646.0" layoutY="293.0" promptText="Brugernavn" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
-      <TextField fx:id="regPass1" layoutX="646.0" layoutY="334.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
-      <TextField fx:id="regPass2" layoutX="646.0" layoutY="377.0" promptText="Bekræft kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="regPass1" layoutX="646.0" layoutY="334.0" promptText="Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
+      <PasswordField fx:id="regPass2" layoutX="646.0" layoutY="377.0" promptText="Bekræft Kodeord" style="-fx-background-color: transparent; -fx-border-color: black; -fx-border-width: 0px 0px 1px 0px;" />
    </children>
 </AnchorPane>

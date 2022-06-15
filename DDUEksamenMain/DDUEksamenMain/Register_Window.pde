@@ -9,8 +9,8 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
   final Button goBack = (Button) namespace.get("back"); // get element by fx:id  //insert corners
 
   final TextField regUsername= (TextField) namespace.get("regUser"); // get element by fx:id  //insert corners
-  final TextField regPassword = (TextField) namespace.get("regPass1"); // get element by fx:id  //insert corners
-  final TextField regPasswordConfirm = (TextField) namespace.get("regPass2"); // get element by fx:id  //insert corners
+  final PasswordField regPassword = (PasswordField) namespace.get("regPass1"); // get element by fx:id  //insert corners
+  final PasswordField regPasswordConfirm = (PasswordField  ) namespace.get("regPass2"); // get element by fx:id  //insert corners
   final Label confMessage = (Label) namespace.get("Message"); // get element by fx:id  //insert corners
 
 

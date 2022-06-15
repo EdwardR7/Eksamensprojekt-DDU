@@ -26,8 +26,11 @@ Scene registerController(final Stage stage, final Canvas canvas) throws IOExcept
           message = "Intet brugernavn eller kodeord indskrevet";
         } else {
 
-          DB.RegisterAccount(regUsername.getText(), regPassword.getText(), regPasswordConfirm.getText());
-          stage.setScene(loginController(stage, canvas));
+            DB.RegisterAccount(regUsername.getText(), regPassword.getText(), regPasswordConfirm.getText());
+            if ( message == "Brugeren blev registreret") {
+              stage.setScene(loginController(stage, canvas));
+            }
+          
         }
         confMessage.setText(message);
       }

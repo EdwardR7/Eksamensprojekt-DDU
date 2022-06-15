@@ -129,7 +129,7 @@ Scene simulationController(final Stage stage, final Canvas canvas) throws IOExce
       for (int r = 0; r < rows; r++) {
         for (int R = 0; R < columns; R++) {
           if (vejFelt[r][R].roadtile && vejFelt[r][R].retning != 0 && !vejFelt[r][R].collision) {
-            if (random(1) < 0.3333) {
+            if (random(1) < 0.25) {
               car.add(new cars(r, R));
             }
           }

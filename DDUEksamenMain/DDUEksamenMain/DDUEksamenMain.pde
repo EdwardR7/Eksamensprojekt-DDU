@@ -1,3 +1,5 @@
+import processing.serial.*;
+
 import java.util.Map;
 import java.nio.file.Paths;
 import javafx.scene.input.MouseEvent;
